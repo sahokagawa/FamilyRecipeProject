@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,8 @@
 		31A3D3EE231543B2004AC9EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31A3D3ED231543B2004AC9EF /* Assets.xcassets */; };
 		31A3D3F1231543B2004AC9EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31A3D3EF231543B2004AC9EF /* LaunchScreen.storyboard */; };
 		31A3D3F9231544BE004AC9EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31A3D3F8231544BE004AC9EF /* GoogleService-Info.plist */; };
+		31A3D3FD23154829004AC9EF /* SiginInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A3D3FC23154829004AC9EF /* SiginInViewController.swift */; };
+		31A3D3FF23154852004AC9EF /* SiginUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A3D3FE23154852004AC9EF /* SiginUpViewController.swift */; };
 		422EDBB6D01505FDFB063E33 /* Pods_FamilyRecipeProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87CC9E046BF12BFFEA5BEC32 /* Pods_FamilyRecipeProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +28,8 @@
 		31A3D3F0231543B2004AC9EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31A3D3F2231543B2004AC9EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31A3D3F8231544BE004AC9EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		31A3D3FC23154829004AC9EF /* SiginInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiginInViewController.swift; sourceTree = "<group>"; };
+		31A3D3FE23154852004AC9EF /* SiginUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiginUpViewController.swift; sourceTree = "<group>"; };
 		4ADAE1ACB77D016329E377D0 /* Pods-FamilyRecipeProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamilyRecipeProject.release.xcconfig"; path = "Target Support Files/Pods-FamilyRecipeProject/Pods-FamilyRecipeProject.release.xcconfig"; sourceTree = "<group>"; };
 		87CC9E046BF12BFFEA5BEC32 /* Pods_FamilyRecipeProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FamilyRecipeProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -63,8 +67,9 @@
 		31A3D3E5231543AF004AC9EF /* FamilyRecipeProject */ = {
 			isa = PBXGroup;
 			children = (
+				31A3D3FB231547D8004AC9EF /* Controllers */,
+				31A3D3FA231547CD004AC9EF /* objects */,
 				31A3D3E6231543AF004AC9EF /* AppDelegate.swift */,
-				31A3D3E8231543AF004AC9EF /* ViewController.swift */,
 				31A3D3EA231543AF004AC9EF /* Main.storyboard */,
 				31A3D3ED231543B2004AC9EF /* Assets.xcassets */,
 				31A3D3EF231543B2004AC9EF /* LaunchScreen.storyboard */,
@@ -74,13 +79,29 @@
 			path = FamilyRecipeProject;
 			sourceTree = "<group>";
 		};
+		31A3D3FA231547CD004AC9EF /* objects */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = objects;
+			sourceTree = "<group>";
+		};
+		31A3D3FB231547D8004AC9EF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				31A3D3FE23154852004AC9EF /* SiginUpViewController.swift */,
+				31A3D3FC23154829004AC9EF /* SiginInViewController.swift */,
+				31A3D3E8231543AF004AC9EF /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		806391AC4A6AFBD4E14454E7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				0F14BD4F13066D485277ED20 /* Pods-FamilyRecipeProject.debug.xcconfig */,
 				4ADAE1ACB77D016329E377D0 /* Pods-FamilyRecipeProject.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -208,6 +229,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31A3D3FF23154852004AC9EF /* SiginUpViewController.swift in Sources */,
+				31A3D3FD23154829004AC9EF /* SiginInViewController.swift in Sources */,
 				31A3D3E9231543AF004AC9EF /* ViewController.swift in Sources */,
 				31A3D3E7231543AF004AC9EF /* AppDelegate.swift in Sources */,
 			);
