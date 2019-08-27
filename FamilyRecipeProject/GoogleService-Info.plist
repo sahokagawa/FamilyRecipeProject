@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>622799706413-a812hc56qa7r3ncjoaleu17uga42r75s.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.622799706413-a812hc56qa7r3ncjoaleu17uga42r75s</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDT9HlSM-lGQsrRSn6QAz_rufqtln0hMMc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>622799706413</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.FamilyRecipeProject</string>
+	<key>PROJECT_ID</key>
+	<string>familyrecipeproject-cb991</string>
+	<key>STORAGE_BUCKET</key>
+	<string>familyrecipeproject-cb991.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:622799706413:ios:db47a07230f0b6bd</string>
+	<key>DATABASE_URL</key>
+	<string>https://familyrecipeproject-cb991.firebaseio.com</string>
+</dict>
+</plist>
