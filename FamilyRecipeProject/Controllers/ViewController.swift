@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var loginUserLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        //ログインしているユーザーの情報を取得
+         let user = Auth.auth().currentUser!
+//        loginUserLabel.text = user
+        
+        
     }
 
 

@@ -58,9 +58,10 @@ class SiginInViewController: UIViewController, UITextFieldDelegate {
             Auth.auth().signIn(withEmail: mailForm.text!, password: passForm.text!) { (user, error) in
                 if error == nil {
                     //ホーム画面へ移行
-                    let storyboard = UIStoryboard(name: "Main", bundle:Bundle.main)
-                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "main")
-                    UIApplication.shared.keyWindow?.rootViewController = rootViewController
+//                    let storyboard = UIStoryboard(name: "Main", bundle:Bundle.main)
+//                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "toHome")
+//                    UIApplication.shared.keyWindow?.rootViewController = rootViewController
+                    self.performSegue(withIdentifier: "toHome", sender: nil)
                 } else {
                     self.alert(title: "エラー", message: "メールアドレスまたはパスワードが間違ってます。", actiontitle: "OK")
                 }

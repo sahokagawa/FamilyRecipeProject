@@ -15,6 +15,9 @@
 		31A3D3F9231544BE004AC9EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31A3D3F8231544BE004AC9EF /* GoogleService-Info.plist */; };
 		31A3D3FD23154829004AC9EF /* SiginInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A3D3FC23154829004AC9EF /* SiginInViewController.swift */; };
 		31A3D3FF23154852004AC9EF /* SiginUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A3D3FE23154852004AC9EF /* SiginUpViewController.swift */; };
+		31A3D40123161A81004AC9EF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A3D40023161A81004AC9EF /* User.swift */; };
+		31A3D40323161A93004AC9EF /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A3D40223161A93004AC9EF /* Group.swift */; };
+		31A3D40523161AA0004AC9EF /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A3D40423161AA0004AC9EF /* Recipe.swift */; };
 		422EDBB6D01505FDFB063E33 /* Pods_FamilyRecipeProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87CC9E046BF12BFFEA5BEC32 /* Pods_FamilyRecipeProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +33,9 @@
 		31A3D3F8231544BE004AC9EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		31A3D3FC23154829004AC9EF /* SiginInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiginInViewController.swift; sourceTree = "<group>"; };
 		31A3D3FE23154852004AC9EF /* SiginUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiginUpViewController.swift; sourceTree = "<group>"; };
+		31A3D40023161A81004AC9EF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		31A3D40223161A93004AC9EF /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		31A3D40423161AA0004AC9EF /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		4ADAE1ACB77D016329E377D0 /* Pods-FamilyRecipeProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamilyRecipeProject.release.xcconfig"; path = "Target Support Files/Pods-FamilyRecipeProject/Pods-FamilyRecipeProject.release.xcconfig"; sourceTree = "<group>"; };
 		87CC9E046BF12BFFEA5BEC32 /* Pods_FamilyRecipeProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FamilyRecipeProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -82,6 +88,9 @@
 		31A3D3FA231547CD004AC9EF /* objects */ = {
 			isa = PBXGroup;
 			children = (
+				31A3D40023161A81004AC9EF /* User.swift */,
+				31A3D40223161A93004AC9EF /* Group.swift */,
+				31A3D40423161AA0004AC9EF /* Recipe.swift */,
 			);
 			path = objects;
 			sourceTree = "<group>";
@@ -231,7 +240,10 @@
 			files = (
 				31A3D3FF23154852004AC9EF /* SiginUpViewController.swift in Sources */,
 				31A3D3FD23154829004AC9EF /* SiginInViewController.swift in Sources */,
+				31A3D40523161AA0004AC9EF /* Recipe.swift in Sources */,
 				31A3D3E9231543AF004AC9EF /* ViewController.swift in Sources */,
+				31A3D40323161A93004AC9EF /* Group.swift in Sources */,
+				31A3D40123161A81004AC9EF /* User.swift in Sources */,
 				31A3D3E7231543AF004AC9EF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

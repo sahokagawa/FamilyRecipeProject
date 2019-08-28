@@ -8,14 +8,15 @@
 
 import UIKit
 import Firebase
-import FirebaseAuth
-
-
 
 class SiginUpViewController: UIViewController,UITextFieldDelegate {
     
+    
+    @IBOutlet weak var nameForm: UITextField!
     @IBOutlet weak var mailForm: UITextField!
     @IBOutlet weak var passForm: UITextField!
+    
+    var documentId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +34,29 @@ class SiginUpViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func siginUp(_ sender: UIButton) {
-        //２つのフォームが入力されてる場合
-        if mailForm.text != "" && passForm.text != "" {
+        //3つのフォームが入力されてる場合
+        if nameForm.text != "" && mailForm.text != "" && passForm.text != "" {
             //入力したパスワードが7文字以上の場合
             if (passForm.text?.count)! > 6  {
                 //会員登録開始
                 Auth.auth().createUser(withEmail: mailForm.text!, password: passForm.text!) { (user, error) in
                     //ログイン成功
                     if error == nil {
+                        
+                        //firestoreに接続
+                        let userName = self.nameForm.text!
+                        
+                        let db = Firestore.firestore()
+                        
+                         db.collection("users").addDocument(data: [
+                            "name": userName,
+                            "uid": user?.user.uid as Any
+                        ])
+                        
+                        //登録確認アラート
+                        self.alert(title: "確認", message: "ご登録メールアドレスにメールを送信しました", actiontitle: "OK")
+                        
+                        
                         //登録メアドに確認のメールを送る
                         Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
                             //エラー処理
