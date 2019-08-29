@@ -30,6 +30,7 @@ class SiginInViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    //パスワード忘れのボタンが押されたら
     @IBAction func remindPassword(_ sender: UIButton) {
         let remindPasswordAlert = UIAlertController(title: "パスワードをリセット", message: "メールアドレスを入力してください", preferredStyle: .alert)
         remindPasswordAlert.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
@@ -51,7 +52,7 @@ class SiginInViewController: UIViewController, UITextFieldDelegate {
         self.present(remindPasswordAlert, animated: true, completion: nil)
     }
     
-
+    //ログインボタンが押されたら
     @IBAction func siginIn(_ sender: UIButton) {
         //ちゃんと入力されてるかの確認
         if mailForm.text != "" && passForm.text != "" {

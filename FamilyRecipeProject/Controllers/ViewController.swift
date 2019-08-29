@@ -18,7 +18,13 @@ class ViewController: UIViewController {
         
         //ログインしているユーザーの情報を取得
          let user = Auth.auth().currentUser!
-//        loginUserLabel.text = user
+            //メ-ルアドレスがラベルに表示される
+//        loginUserLabel.text = user.email
+        
+        let db = Firestore.firestore()
+        let userName = db.collection("users").document("name")
+        print(user.displayName)
+        loginUserLabel.text = user.displayName
         
         
     }

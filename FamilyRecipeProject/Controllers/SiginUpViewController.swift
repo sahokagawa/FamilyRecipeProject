@@ -43,13 +43,21 @@ class SiginUpViewController: UIViewController,UITextFieldDelegate {
                     //ログイン成功
                     if error == nil {
                         
+                        //アドレスとか名前を別々で保存してたけど、一緒になる
+                        let changeRequest = user?.user.createProfileChangeRequest()
+                        changeRequest?.displayName = self.nameForm.text!
+                        changeRequest?.commitChanges(completion: { (error) in
+                            
+                        })
+                        
                         //firestoreに接続
                         let userName = self.nameForm.text!
                         
                         let db = Firestore.firestore()
                         
                          db.collection("users").addDocument(data: [
-                            "name": userName,
+                            //あってもいいけど使わないからなくていいらしい
+//                            "name": userName,
                             "uid": user?.user.uid as Any
                         ])
                         
