@@ -21,9 +21,9 @@ class ViewController: UIViewController {
             //メ-ルアドレスがラベルに表示される
 //        loginUserLabel.text = user.email
         
-        let db = Firestore.firestore()
-        let userName = db.collection("users").document("name")
-        print(user.displayName)
+//        let db = Firestore.firestore()
+//        let userName = db.collection("users").document("name")
+//        print(user.displayName)
         loginUserLabel.text = user.displayName
         
         
