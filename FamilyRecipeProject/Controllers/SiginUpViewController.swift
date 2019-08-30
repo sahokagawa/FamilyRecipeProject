@@ -57,7 +57,7 @@ class SiginUpViewController: UIViewController,UITextFieldDelegate {
                         
                          db.collection("users").addDocument(data: [
                             //あってもいいけど使わないからなくていいらしい
-//                            "name": userName,
+                            "name": userName,
                             "uid": user?.user.uid as Any
                         ])
                         

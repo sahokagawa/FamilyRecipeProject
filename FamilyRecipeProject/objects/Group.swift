@@ -6,4 +6,7 @@
 //  Copyright © 2019 香川紗穂. All rights reserved.
 //
 
-import Foundation
+struct Group {
+    let uid: String
+    let name:String
+}
