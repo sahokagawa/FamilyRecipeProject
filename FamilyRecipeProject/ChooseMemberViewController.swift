@@ -17,5 +17,12 @@ class ChooseMemberViewController: UIViewController {
 
     }
     
-
+    
+    
+// グループメンバーを選んで次のページに行く時
+    
+    @IBAction func toSettingGroup(_ sender: UIButton) {
+        performSegue(withIdentifier: "toSettingGroup", sender: nil)
+    }
+    
 }
