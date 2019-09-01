@@ -9,9 +9,10 @@
 import UIKit
 import Firebase
 
-class SiginUpViewController: UIViewController,UITextFieldDelegate {
+class SiginUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
     
+    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameForm: UITextField!
     @IBOutlet weak var mailForm: UITextField!
     @IBOutlet weak var passForm: UITextField!
@@ -33,6 +34,27 @@ class SiginUpViewController: UIViewController,UITextFieldDelegate {
         
     }
     
+    //プロフィール画像選択
+    @IBAction func selectImage(_ sender: UIButton) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.delegate = self
+            present (imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    //選択した画像を画面に表示する
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let pickedImage = info[.originalImage] as? UIImage{
+            profileImage.image = pickedImage
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     @IBAction func siginUp(_ sender: UIButton) {
         //3つのフォームが入力されてる場合
         if nameForm.text != "" && mailForm.text != "" && passForm.text != "" {
@@ -50,15 +72,29 @@ class SiginUpViewController: UIViewController,UITextFieldDelegate {
                             
                         })
                         
+                        //プロフィール画像をfirestoreに保存したい
+                        let profileImage = self.profileImage.image!.jpegData(compressionQuality: 1.0)! as NSData
+                        let photoUrl = NSString(data: profileImage as Data, encoding: String.Encoding.utf8.rawValue)
+                        let url = URL(string: photoUrl! as String)
+                        
+                        
+                        let changeRequest2 = user?.user.createProfileChangeRequest()
+                        changeRequest2?.photoURL = url
+                        changeRequest2?.commitChanges(completion: { (error)in
+                            
+                        })
+                        
                         //firestoreに接続
                         let userName = self.nameForm.text!
+                        
                         
                         let db = Firestore.firestore()
                         
                          db.collection("users").addDocument(data: [
                             //あってもいいけど使わないからなくていいらしい
                             "name": userName,
-                            "uid": user?.user.uid as Any
+                            "uid": user?.user.uid as Any,
+                            "photo":url as Any
                         ])
                         
                         //登録確認アラート
