@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XKR-iM-9ah">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -138,12 +138,12 @@
                         <outlet property="mailForm" destination="oXs-n3-CgO" id="XUu-6H-ieK"/>
                         <outlet property="passForm" destination="ecF-ev-bkc" id="ADv-Gb-WKP"/>
                         <segue destination="5Fl-4X-r6j" kind="show" identifier="toSIginUp" id="nLX-ue-h5m"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="toHome" id="inE-un-6c1"/>
+                        <segue destination="XKR-iM-9ah" kind="show" identifier="toHome" id="JJc-JD-Age"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iA0-I5-gMR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-707.24637681159425" y="94.419642857142847"/>
+            <point key="canvasLocation" x="-132" y="92"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -204,18 +204,19 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Agq-Ns-2jv"/>
                     <connections>
                         <outlet property="collectionView" destination="dIe-gb-lVu" id="19o-FC-5ac"/>
                         <outlet property="loginUserLabel" destination="4cj-7f-Obq" id="zao-AG-foH"/>
                         <segue destination="ekU-VJ-OMu" kind="show" identifier="toChooseMember" id="lI2-2x-0Re"/>
-                        <segue destination="uh9-by-4rb" kind="show" identifier="toMyGroup" id="EpC-eM-6ao"/>
+                        <segue destination="xeG-g5-OjN" kind="show" identifier="toMyGroup" id="nXE-N1-XLV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="105.79710144927537" y="91.741071428571431"/>
+            <point key="canvasLocation" x="2418.840579710145" y="91.741071428571431"/>
         </scene>
-        <!--Choose Member View Controller-->
+        <!--グループ設定-->
         <scene sceneID="eA9-gr-TNE">
             <objects>
                 <viewController id="ekU-VJ-OMu" customClass="ChooseMemberViewController" customModule="FamilyRecipeProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -254,7 +255,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WMq-nM-qnN">
-                                <rect key="frame" x="3" y="425" width="411" height="270"/>
+                                <rect key="frame" x="0.0" y="339" width="411" height="270"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -272,6 +273,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Geo-zA-83T"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="グループ設定" id="tXp-Y9-4Od"/>
                     <connections>
                         <outlet property="resultTable" destination="WMq-nM-qnN" id="7Ic-Ju-cTc"/>
                         <outlet property="searchUser" destination="P2L-LB-DD5" id="NI1-YP-KfL"/>
@@ -280,7 +282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IF5-q9-raH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="997.10144927536237" y="87.723214285714278"/>
+            <point key="canvasLocation" x="3426.0869565217395" y="469.41964285714283"/>
         </scene>
         <!--Setting Group View Controller-->
         <scene sceneID="EpV-yH-ncF">
@@ -321,9 +323,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iOn-A9-6yi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1827.5362318840582" y="91.741071428571431"/>
+            <point key="canvasLocation" x="4426.0869565217399" y="468.75"/>
         </scene>
-        <!--My Group View Controller-->
+        <!--レシピ-->
         <scene sceneID="IDt-vp-wco">
             <objects>
                 <viewController id="uh9-by-4rb" customClass="MyGroupViewController" customModule="FamilyRecipeProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -332,7 +334,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="グループページ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pG3-YC-VkJ">
-                                <rect key="frame" x="116" y="168" width="183" height="73"/>
+                                <rect key="frame" x="41" y="99" width="183" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBE-uN-yjG">
+                                <rect key="frame" x="283" y="120" width="108" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="グループの設定"/>
+                                <connections>
+                                    <action selector="didClickReSettingButton:" destination="uh9-by-4rb" eventType="touchUpInside" id="W5k-OH-7va"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="YrD-yT-OK4"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="レシピ" id="3Cl-7f-OEQ"/>
+                    <connections>
+                        <segue destination="ekU-VJ-OMu" kind="show" identifier="toReSettingGroup" id="Uv4-G9-yCw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A68-4A-E3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2335" y="1237"/>
+        </scene>
+        <!--作ってみた-->
+        <scene sceneID="8RW-ps-I3e">
+            <objects>
+                <viewController id="Def-Vv-ZbC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TlQ-k6-71N">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="作ってみた" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rA-G8-EuD">
+                                <rect key="frame" x="101" y="164" width="219" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -340,15 +378,56 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="YrD-yT-OK4"/>
+                        <viewLayoutGuide key="safeArea" id="tUH-6X-lPL"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="作ってみた" id="BX6-tY-vjH"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="A68-4A-E3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aIs-MD-O9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992.75362318840587" y="823.66071428571422"/>
+            <point key="canvasLocation" x="2335" y="2140"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="XHQ-iE-3fW">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="xeG-g5-OjN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jtf-Ji-mS9">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="uh9-by-4rb" kind="relationship" relationship="viewControllers" id="hIQ-Pq-02J"/>
+                        <segue destination="Def-Vv-ZbC" kind="relationship" relationship="viewControllers" id="UK0-Ly-esz"/>
+                        <segue destination="XKR-iM-9ah" kind="relationship" relationship="viewControllers" id="Q1B-oC-h6i"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cE1-mY-V7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="768" y="1265"/>
+        </scene>
+        <!--マイページ-->
+        <scene sceneID="9fB-Uk-KCi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XKR-iM-9ah" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="マイページ" id="8Gp-xL-i5X"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9Jb-JY-ubq">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aia-nK-0Ww"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F4O-FD-E6y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1508.6956521739132" y="91.741071428571431"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="vVb-H8-dz4"/>
+        <segue reference="JJc-JD-Age"/>
+        <segue reference="Uv4-G9-yCw"/>
     </inferredMetricsTieBreakers>
 </document>

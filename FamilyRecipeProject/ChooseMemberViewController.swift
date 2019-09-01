@@ -22,6 +22,8 @@ class ChooseMemberViewController: UIViewController {
         }
     }
     
+    var documentId = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -81,6 +83,15 @@ extension ChooseMemberViewController : UITableViewDelegate,UITableViewDataSource
         let userName = users[indexPath.row]
         cell.textLabel?.text = userName.name
         return cell
+    }
+    
+    //セルがクリックされたら
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = Auth.auth().currentUser
+        let uid = user?.uid
+        let db = Firestore.firestore()
+        db.collection("groups").document(documentId).collection("users").addDocument(data: ["uid" :uid as Any])
+        
     }
 
 }
