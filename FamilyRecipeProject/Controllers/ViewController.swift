@@ -14,6 +14,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var loginUserLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
+    var groups : [Group] = [] {
+        didSet{
+            collectionView.reloadData()
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -32,16 +37,24 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        //作ったグループをcollectionViewに表示したい
+        let db = Firestore.firestore()
+        let groupName = db.collection("groups").document("groupName")
+        let groupImage = db.collection("groups").document("photoData")
+        
+        let group = Group(name: groupName, photoData: groupImage)
+        
     }
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return groups.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+//        let groupName =
         
         let button = cell.viewWithTag(1) as! UIButton
         if indexPath.row == 0 {
@@ -49,15 +62,16 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
             button.addTarget(self, action: #selector(goToChooseMember(_:)), for: UIControl.Event.touchUpInside)
         } else {
             button.addTarget(self, action: #selector(goToMyGroup(_:)), for: UIControl.Event.touchUpInside)
-            button.setImage(UIImage(named: "1"), for: .normal)
+            button.setImage(UIImage(named: "photoData"), for: .normal)
         }
         
         
         
         let label = cell.viewWithTag(2) as! UILabel
-        label.text = "登録グループ"
+//        label.text =
         
         if indexPath.row == 0 {
+            
             label.text = "追加"
         }
         

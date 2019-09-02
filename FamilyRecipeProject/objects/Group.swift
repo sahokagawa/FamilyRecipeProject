@@ -7,6 +7,7 @@
 //
 
 struct Group {
-    let uid: String
-    let name:String
+//    let uid: String
+    let name: String
+    let photoData: String
 }
