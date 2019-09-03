@@ -10,4 +10,5 @@ struct User {
     let uid: String
     let name:String
     let photoUrl:String
+    let groups:[String]
 }

@@ -106,16 +106,12 @@ class SiginUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
                                 
                                 //firestoreに接続
                                 let userName = self.nameForm.text!
-                                
-                                
                                 let db = Firestore.firestore()
-                                
-                                db.collection("users").addDocument(data: [
-                                    //あってもいいけど使わないからなくていいらしい
+                                db.collection("users").document(user.user.uid).setData([
                                     "name": userName,
                                     "uid": user.user.uid as Any,
                                     "photo":downloadURL.absoluteString
-                                    ])
+                                ])
                                 
                                 //登録確認アラート
                                 self.alert(title: "確認", message: "ご登録メールアドレスにメールを送信しました", actiontitle: "OK")

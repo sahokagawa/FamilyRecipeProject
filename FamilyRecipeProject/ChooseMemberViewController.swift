@@ -65,8 +65,9 @@ class ChooseMemberViewController: UIViewController {
                 let uid = document.get("uid") as! String
                 let name = document.get("name") as! String
                 let photoUrl = document.get("photo") as! String
+                let groups = [""]
                 //インスタンス化
-                let user = User(uid: uid, name: name, photoUrl: photoUrl)
+                let user = User(uid: uid, name: name, photoUrl: photoUrl, groups: groups)
                 users.append(user)
             }
             

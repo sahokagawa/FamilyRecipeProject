@@ -25,9 +25,8 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
     }
     
 
-    
+    //グループ画像選択
     @IBAction func selectGroupImage(_ sender: UIButton) {
-        //グループ画像選択
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
                 let imagePicker = UIImagePickerController()
                 imagePicker.sourceType = .photoLibrary
@@ -47,7 +46,9 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
     }
     
     
-    //グループ作成ボタン
+    
+    
+    //グループ作成ボタンが押されたら
     @IBAction func createGroup(_ sender: UIButton) {
         let user = Auth.auth().currentUser
         let uid = user?.uid
@@ -64,11 +65,29 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
             }else{
                 print("成功です")
                 
+                // 選択された人グループに自分を追加
+                let me :User = User(uid: user!.uid, name: (user?.displayName)!, photoUrl: (user?.photoURL!.absoluteString)!, groups: [""])
+                self.selectedMember.append(me)
                 
+                //選択された人をグループに登録
                 for user in self.selectedMember {
                     ref?.collection("users").addDocument(data: [
                         "uid": user.uid
                     ])
+                    
+                    db.collection("users").whereField("uid", isEqualTo: user.uid).getDocuments(completion: { (querySnapshot, error) in
+                        
+                        guard let documents = querySnapshot?.documents else {
+                            return
+                        }
+                        
+                        for document in documents {
+                            db.collection("users").document(document.documentID).collection("groups").addDocument(data: [
+                                "groupId": ref!.documentID
+                            ])
+                        }
+                        
+                    })
                 }
                 
                 
