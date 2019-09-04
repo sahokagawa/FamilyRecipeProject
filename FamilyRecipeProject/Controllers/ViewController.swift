@@ -21,7 +21,6 @@ class ViewController: UIViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -81,14 +80,12 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         
         
         //collectionViewに表示される画像
-        let button = cell.viewWithTag(1) as! UIButton
+        let imageView = cell.viewWithTag(1) as! UIImageView
         if indexPath.row == 0 {
-            button.setImage(UIImage(named: "4"), for: .normal)
-            button.addTarget(self, action: #selector(goToChooseMember(_:)), for: UIControl.Event.touchUpInside)
+            imageView.image = UIImage(named: "4")
         } else {
             let group = groups[indexPath.row - 1]
-            button.addTarget(self, action: #selector(goToMyGroup(_:)), for: UIControl.Event.touchUpInside)
-            button.setImage(UIImage(data: group.photoData), for: .normal)
+            imageView.image = UIImage(data: group.photoData)
         }
         
         //collectionViewに表示されるテキスト
@@ -105,13 +102,24 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         return cell
     }
     
-    @objc func goToChooseMember (_ sender: UIButton) {
-        performSegue(withIdentifier: "toChooseMember", sender: nil)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            performSegue(withIdentifier: "toChooseMember", sender: nil)
+        } else {
+            let group = groups[indexPath.row - 1]
+            let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
+            appDelegate.group = group
+            performSegue(withIdentifier: "toMyGroup", sender: nil)//group)
+        }
     }
     
-    @objc func goToMyGroup (_ sender: UIButton) {
-        performSegue(withIdentifier: "toMyGroup", sender: nil)
-    }
-    
-
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toMyGroup" {
+//            let tabVc = self.presentedViewController as! UITabBarController
+//            let nav = tabVc.selectedViewController as! UINavigationController
+//            let nextVC = nav.topViewController as! MyGroupViewController
+//            nextVC.group = sender as! Group
+//        }
+//    }
+//
 }

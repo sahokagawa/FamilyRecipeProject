@@ -10,6 +10,12 @@
 		3107D5B8231764D4000AA09E /* ChooseMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107D5B7231764D4000AA09E /* ChooseMemberViewController.swift */; };
 		3107D5C223179288000AA09E /* MyGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107D5C123179288000AA09E /* MyGroupViewController.swift */; };
 		3107D5C42317C9D7000AA09E /* SettingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107D5C32317C9D7000AA09E /* SettingGroupViewController.swift */; };
+		315192CA231E69020073C304 /* TryRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315192C9231E69020073C304 /* TryRecipeViewController.swift */; };
+		315192CC231E6E170073C304 /* WriteRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315192CB231E6E170073C304 /* WriteRecipeViewController.swift */; };
+		315192CE231E6E370073C304 /* ShowRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315192CD231E6E370073C304 /* ShowRecipeViewController.swift */; };
+		315192D0231E6EBF0073C304 /* WriteTryRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315192CF231E6EBF0073C304 /* WriteTryRecipeViewController.swift */; };
+		315192D2231E6EDB0073C304 /* ShowTryRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315192D1231E6EDB0073C304 /* ShowTryRecipeViewController.swift */; };
+		315192D6231E9C530073C304 /* TryRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315192D5231E9C530073C304 /* TryRecipe.swift */; };
 		31A3D3E7231543AF004AC9EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A3D3E6231543AF004AC9EF /* AppDelegate.swift */; };
 		31A3D3E9231543AF004AC9EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A3D3E8231543AF004AC9EF /* ViewController.swift */; };
 		31A3D3EC231543AF004AC9EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31A3D3EA231543AF004AC9EF /* Main.storyboard */; };
@@ -29,6 +35,12 @@
 		3107D5B7231764D4000AA09E /* ChooseMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChooseMemberViewController.swift; path = ../ChooseMemberViewController.swift; sourceTree = "<group>"; };
 		3107D5C123179288000AA09E /* MyGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupViewController.swift; sourceTree = "<group>"; };
 		3107D5C32317C9D7000AA09E /* SettingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingGroupViewController.swift; sourceTree = "<group>"; };
+		315192C9231E69020073C304 /* TryRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryRecipeViewController.swift; sourceTree = "<group>"; };
+		315192CB231E6E170073C304 /* WriteRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteRecipeViewController.swift; sourceTree = "<group>"; };
+		315192CD231E6E370073C304 /* ShowRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRecipeViewController.swift; sourceTree = "<group>"; };
+		315192CF231E6EBF0073C304 /* WriteTryRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTryRecipeViewController.swift; sourceTree = "<group>"; };
+		315192D1231E6EDB0073C304 /* ShowTryRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTryRecipeViewController.swift; sourceTree = "<group>"; };
+		315192D5231E9C530073C304 /* TryRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryRecipe.swift; sourceTree = "<group>"; };
 		31A3D3E3231543AF004AC9EF /* FamilyRecipeProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FamilyRecipeProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A3D3E6231543AF004AC9EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31A3D3E8231543AF004AC9EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +70,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		315192D3231E6F230073C304 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				3107D5C123179288000AA09E /* MyGroupViewController.swift */,
+				315192CB231E6E170073C304 /* WriteRecipeViewController.swift */,
+				315192CD231E6E370073C304 /* ShowRecipeViewController.swift */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		315192D4231E6F510073C304 /* Try */ = {
+			isa = PBXGroup;
+			children = (
+				315192C9231E69020073C304 /* TryRecipeViewController.swift */,
+				315192CF231E6EBF0073C304 /* WriteTryRecipeViewController.swift */,
+				315192D1231E6EDB0073C304 /* ShowTryRecipeViewController.swift */,
+			);
+			path = Try;
+			sourceTree = "<group>";
+		};
 		31A3D3DA231543AF004AC9EF = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +129,7 @@
 				31A3D40023161A81004AC9EF /* User.swift */,
 				31A3D40223161A93004AC9EF /* Group.swift */,
 				31A3D40423161AA0004AC9EF /* Recipe.swift */,
+				315192D5231E9C530073C304 /* TryRecipe.swift */,
 			);
 			path = objects;
 			sourceTree = "<group>";
@@ -108,8 +141,9 @@
 				31A3D3FC23154829004AC9EF /* SiginInViewController.swift */,
 				31A3D3E8231543AF004AC9EF /* ViewController.swift */,
 				3107D5B7231764D4000AA09E /* ChooseMemberViewController.swift */,
-				3107D5C123179288000AA09E /* MyGroupViewController.swift */,
 				3107D5C32317C9D7000AA09E /* SettingGroupViewController.swift */,
+				315192D3231E6F230073C304 /* Recipe */,
+				315192D4231E6F510073C304 /* Try */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -248,15 +282,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				31A3D3FF23154852004AC9EF /* SiginUpViewController.swift in Sources */,
+				315192D6231E9C530073C304 /* TryRecipe.swift in Sources */,
 				31A3D3FD23154829004AC9EF /* SiginInViewController.swift in Sources */,
 				31A3D40523161AA0004AC9EF /* Recipe.swift in Sources */,
 				3107D5C223179288000AA09E /* MyGroupViewController.swift in Sources */,
+				315192D2231E6EDB0073C304 /* ShowTryRecipeViewController.swift in Sources */,
 				3107D5C42317C9D7000AA09E /* SettingGroupViewController.swift in Sources */,
 				31A3D3E9231543AF004AC9EF /* ViewController.swift in Sources */,
+				315192D0231E6EBF0073C304 /* WriteTryRecipeViewController.swift in Sources */,
 				31A3D40323161A93004AC9EF /* Group.swift in Sources */,
 				31A3D40123161A81004AC9EF /* User.swift in Sources */,
+				315192CC231E6E170073C304 /* WriteRecipeViewController.swift in Sources */,
 				3107D5B8231764D4000AA09E /* ChooseMemberViewController.swift in Sources */,
 				31A3D3E7231543AF004AC9EF /* AppDelegate.swift in Sources */,
+				315192CE231E6E370073C304 /* ShowRecipeViewController.swift in Sources */,
+				315192CA231E69020073C304 /* TryRecipeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

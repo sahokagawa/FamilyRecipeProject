@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+struct Recipe {
+    let uid: String
+    let name: String
+    let photoData: String
+}
