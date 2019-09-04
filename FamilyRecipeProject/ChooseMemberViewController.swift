@@ -13,8 +13,7 @@ import AlamofireImage
 class ChooseMemberViewController: UIViewController {
     
     
-    
-    //検索
+
     @IBOutlet weak var searchUser: UITextField!
     
     //検索結果

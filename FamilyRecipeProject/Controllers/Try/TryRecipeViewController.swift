@@ -7,16 +7,24 @@
 //
 
 import UIKit
+import Firebase
 
 class TryRecipeViewController: UIViewController {
     
+    //前の画面から選択されたグループの情報を受け取るための箱
+    var group: Group? = nil
+    
     @IBOutlet weak var tryRecipeCollection: UICollectionView!
+    var recipes : [TryRecipe] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tryRecipeCollection.delegate = self
         tryRecipeCollection.dataSource = self
+        
+        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
+        group = appDelegate.group
 
     }
     

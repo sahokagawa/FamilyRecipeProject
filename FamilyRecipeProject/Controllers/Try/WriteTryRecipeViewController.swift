@@ -7,24 +7,52 @@
 //
 
 import UIKit
+import Firebase
 
-class WriteTryRecipeViewController: UIViewController {
-
+class WriteTryRecipeViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    //前の画面から選択されたグループの情報を受け取るための箱
+    var group: Group? = nil
+    
+    
+    @IBOutlet weak var tryRecipeName: UITextField!
+    @IBOutlet weak var tryRecipeImage: UIButton!
+    @IBOutlet weak var tryRecipeMessage: UITextField!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func selectTryRecipeImage(_ sender: UIButton) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.delegate = self
+            present (imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let pickedImage = info[.originalImage] as? UIImage{
+            tryRecipeImage.setImage(pickedImage, for: .normal)
+        }
+        picker.dismiss(animated: true, completion: nil)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    //作ってみた完成ボタン
+    @IBAction func createTryRecipe(_ sender: UIButton) {
+        let data = tryRecipeImage.imageView?.image?.jpegData(compressionQuality: 0.1)
+        let name = tryRecipeName.text
+        let messageFor = tryRecipeMessage.text
+        
+        
     }
-    */
-
+    
+    
 }

@@ -73,7 +73,7 @@ extension MyGroupViewController: UICollectionViewDelegate,UICollectionViewDataSo
         }
     }
     
-    
+    //tabとかnaviコントローラー挟んで、処理が面倒だったからappdelegateを使ってデータを渡してる！
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "toWriteRecipe" {
 //             let nextVC = segue.destination as! WriteRecipeViewController
