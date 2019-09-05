@@ -15,7 +15,7 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
     var selectedMember :[User] = []
   
     
-    @IBOutlet weak var groupImage: UIImageView!
+    @IBOutlet weak var buttonImage: UIButton!
     @IBOutlet weak var groupName: UITextField!
     
     override func viewDidLoad() {
@@ -40,7 +40,7 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let pickedImage = info[.originalImage] as? UIImage{
-            groupImage.image = pickedImage
+            buttonImage.setImage(pickedImage, for: .normal)
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -52,12 +52,12 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
     @IBAction func createGroup(_ sender: UIButton) {
         let user = Auth.auth().currentUser
         let uid = user?.uid
-        let data = groupImage.image?.jpegData(compressionQuality: 0.1)
+        let data = buttonImage.imageView?.image?.jpegData(compressionQuality: 0.1)
         let db = Firestore.firestore()
         var ref: DocumentReference? = nil
         ref = db.collection("groups").addDocument(data: [
-            "groupName": groupName.text,
-            "photoData": data,
+            "groupName": groupName.text as Any,
+            "photoData": data as Any,
         ]) { err in
             
             if let err = err {

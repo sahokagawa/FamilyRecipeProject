@@ -12,7 +12,7 @@ import Firebase
 class SiginUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
     
-    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var buttonImage: UIButton!
     @IBOutlet weak var nameForm: UITextField!
     @IBOutlet weak var mailForm: UITextField!
     @IBOutlet weak var passForm: UITextField!
@@ -48,7 +48,7 @@ class SiginUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let pickedImage = info[.originalImage] as? UIImage{
-            profileImage.image = pickedImage
+            buttonImage.setImage(pickedImage, for: .normal)
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -77,7 +77,7 @@ class SiginUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
                         })
                         
                         //プロフィール画像をfirestoreに保存したい
-                        let profileImage = self.profileImage.image!.jpegData(compressionQuality: 1.0)! as Data
+                        let profileImage = self.buttonImage.imageView?.image!.jpegData(compressionQuality: 1.0)! as! Data
                         
                         
                         

@@ -37,7 +37,7 @@ class MyGroupViewController: UIViewController {
         
         //レシピを表示させたい
         let db = Firestore.firestore()
-        db.collection("groups").document("syj3D8VOvkazBwsB3duE").collection("recipes").getDocuments { (querySnapshot, error) in
+        db.collection("groups").document(group!.uid).collection("recipes").getDocuments { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else{
                 return
             }

@@ -33,7 +33,7 @@ class TryRecipeViewController: UIViewController {
         //作ってみたを表示させたい
         let db = Firestore.firestore()
         
-        db.collection("groups").document("syj3D8VOvkazBwsB3duE").collection("tryRecipes").getDocuments { (querySnapshot, error) in
+        db.collection("groups").document(group!.uid).collection("tryRecipes").getDocuments { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else{
                 return
             }
