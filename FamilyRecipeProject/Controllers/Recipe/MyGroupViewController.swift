@@ -109,7 +109,7 @@ extension MyGroupViewController: UICollectionViewDelegate,UICollectionViewDataSo
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toShowRecipe"{
             let nextVC = segue.destination as! ShowRecipeViewController
-            nextVC.recipe = sender as! [Recipe]
+            nextVC.recipe = sender as! Recipe
         }
         
     }
