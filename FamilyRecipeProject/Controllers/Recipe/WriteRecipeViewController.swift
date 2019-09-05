@@ -27,6 +27,9 @@ class WriteRecipeViewController: UIViewController,UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
+        group = appDelegate.group
 
     }
     
@@ -54,7 +57,7 @@ class WriteRecipeViewController: UIViewController,UIImagePickerControllerDelegat
         let name = recipeName.text
         let messageFor = message.text
         let db = Firestore.firestore()
-        db.collection("groups").document("syj3D8VOvkazBwsB3duE").collection("recipes").addDocument(data: [
+        db.collection("groups").document(group!.uid).collection("recipes").addDocument(data: [
             "name": name as Any,
             "message": messageFor as Any,
             "photoData": data as Any

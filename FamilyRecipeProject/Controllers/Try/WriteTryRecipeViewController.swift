@@ -23,6 +23,9 @@ class WriteTryRecipeViewController: UIViewController,UIImagePickerControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
+        group = appDelegate.group
 
     }
     
@@ -51,7 +54,7 @@ class WriteTryRecipeViewController: UIViewController,UIImagePickerControllerDele
         let name = tryRecipeName.text
         let messageFor = tryRecipeMessage.text
         let db = Firestore.firestore()
-        db.collection("groups").document("syj3D8VOvkazBwsB3duE").collection("tryRecipes").addDocument(data: [
+        db.collection("groups").document(group!.uid).collection("tryRecipes").addDocument(data: [
             "name": name as Any,
             "message": messageFor as Any,
             "photoData": data as Any
