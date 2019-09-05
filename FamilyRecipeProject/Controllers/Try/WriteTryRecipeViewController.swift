@@ -50,6 +50,12 @@ class WriteTryRecipeViewController: UIViewController,UIImagePickerControllerDele
         let data = tryRecipeImage.imageView?.image?.jpegData(compressionQuality: 0.1)
         let name = tryRecipeName.text
         let messageFor = tryRecipeMessage.text
+        let db = Firestore.firestore()
+        db.collection("groups").document("syj3D8VOvkazBwsB3duE").collection("tryRecipes").addDocument(data: [
+            "name": name as Any,
+            "message": messageFor as Any,
+            "photoData": data as Any
+            ])
         
         
     }
