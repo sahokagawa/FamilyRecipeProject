@@ -9,9 +9,20 @@
 import UIKit
 
 class ShowTryRecipeViewController: UIViewController {
+    
+    @IBOutlet weak var tryRecipeImage: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var message: UITextView!
+    
+    var tryRecipe: TryRecipe? = nil
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       tryRecipeImage.image = UIImage(data: tryRecipe!.photoData)
+        name.text = tryRecipe?.name
+        message.text = tryRecipe?.message
 
     }
     

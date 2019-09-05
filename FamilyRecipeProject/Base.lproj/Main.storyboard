@@ -646,6 +646,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="JHK-jf-2av"/>
                     </view>
+                    <connections>
+                        <outlet property="message" destination="TZ3-ch-f8A" id="AmN-82-mH5"/>
+                        <outlet property="name" destination="CYI-Rz-hWJ" id="xIh-rQ-xan"/>
+                        <outlet property="tryRecipeImage" destination="AL9-4s-NK5" id="XXn-s0-9I7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RhU-ae-YWF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -708,7 +713,7 @@
                     <connections>
                         <outlet property="tryRecipeCollection" destination="a4M-Z9-afH" id="cib-U1-Afa"/>
                         <segue destination="sTG-Gf-Oup" kind="show" identifier="toWriteTryRecipe" id="dpF-ak-kh6"/>
-                        <segue destination="416-az-Kw0" kind="show" identifier="toWriteShowRecipe" id="qaK-gG-NDp"/>
+                        <segue destination="416-az-Kw0" kind="show" identifier="toShowTryRecipe" id="qaK-gG-NDp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aIs-MD-O9E" userLabel="First Responder" sceneMemberID="firstResponder"/>

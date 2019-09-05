@@ -92,10 +92,18 @@ extension TryRecipeViewController: UICollectionViewDataSource,UICollectionViewDe
         if indexPath.row == 0 {
             performSegue(withIdentifier: "toWriteTryRecipe", sender: nil)
         }else{
-            performSegue(withIdentifier: "toWriteShowRecipe", sender: nil)
+             let tryRecipe = tryRecipes[indexPath.row - 1]
+            performSegue(withIdentifier: "toShowTryRecipe", sender: tryRecipe)
         }
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toShowTryRecipe" {
+            let nextVC = segue.destination as! ShowTryRecipeViewController
+            nextVC.tryRecipe = sender as! TryRecipe
+        }
+    }
 }
 
 

@@ -98,10 +98,10 @@ extension MyGroupViewController: UICollectionViewDelegate,UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let recipe  = recipes[indexPath.row - 1]
         if indexPath.row == 0 {
             performSegue(withIdentifier: "toWriteRecipe", sender: nil)
         } else {
+            let recipe  = recipes[indexPath.row - 1]
             performSegue(withIdentifier: "toShowRecipe", sender: recipe)
         }
     }

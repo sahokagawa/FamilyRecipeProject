@@ -15,7 +15,7 @@ class ShowRecipeViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var message: UITextView!
     
-    var recipe:Recipe? = nil
+    var recipe: Recipe? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
