@@ -11,14 +11,18 @@ import Firebase
 
 class ShowRecipeViewController: UIViewController {
     
-    
-    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var message: UITextView!
     
+    var recipe:Recipe? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        recipeImage.image = UIImage(data: recipe!.photoData)
+        name.text = recipe?.name
+        message.text = recipe?.message
 
 
 

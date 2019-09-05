@@ -526,9 +526,9 @@
                         <viewLayoutGuide key="safeArea" id="pJh-PW-4i9"/>
                     </view>
                     <connections>
-                        <outlet property="image" destination="AT7-I9-nt1" id="qIk-rC-zWd"/>
                         <outlet property="message" destination="Jb8-zc-3Ue" id="OVK-bl-kQj"/>
                         <outlet property="name" destination="fWB-8u-rn7" id="49w-sr-1f6"/>
+                        <outlet property="recipeImage" destination="AT7-I9-nt1" id="qIk-rC-zWd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="21K-Yy-yWu" userLabel="First Responder" sceneMemberID="firstResponder"/>
