@@ -9,5 +9,8 @@
 import Foundation
 
 struct TryRecipe {
-    
+    let uid: String
+    let name: String
+    let photoData: Data
+    let message: String
 }

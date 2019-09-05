@@ -15,7 +15,11 @@ class TryRecipeViewController: UIViewController {
     var group: Group? = nil
     
     @IBOutlet weak var tryRecipeCollection: UICollectionView!
-    var recipes : [TryRecipe] = []
+    var tryRecipes : [TryRecipe] = []{
+        didSet {
+            tryRecipeCollection.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,17 +29,41 @@ class TryRecipeViewController: UIViewController {
         
         let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
         group = appDelegate.group
+        
+        //作ってみたを表示させたい
+        let db = Firestore.firestore()
+        
+        db.collection("groups").document("syj3D8VOvkazBwsB3duE").collection("tryRecipes").getDocuments { (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else{
+                return
+            }
+            
+            //作ってみたレシピがあった時
+            var tryRecipes:[TryRecipe] = [] {
+                didSet{
+                    self.tryRecipes = tryRecipes
+                }
+            }
+            
+            for document in documents {
+                let recipeId = document.documentID
+                let recipeName = document.get("name") as! String
+                let recipeMessage = document.get("message") as! String
+                let recipeImage = document.get("photoData") as! Data
+                
+                let tryRecipe = TryRecipe(uid: recipeId, name: recipeName, photoData: recipeImage,message: recipeMessage)
+                tryRecipes.append(tryRecipe)
+            }
+        }
 
     }
-    
-
 
 }
 
 
 extension TryRecipeViewController: UICollectionViewDataSource,UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return tryRecipes.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -44,7 +72,8 @@ extension TryRecipeViewController: UICollectionViewDataSource,UICollectionViewDe
         if indexPath.row == 0 {
             imageView.image = UIImage(named: "4")
         }else{
-            imageView.image = UIImage(named: "1")
+            let tryRecipe = tryRecipes[indexPath.row - 1]
+            imageView.image = UIImage(data: tryRecipe.photoData)
         }
         
         let label = cell.viewWithTag(2) as! UILabel
@@ -52,7 +81,8 @@ extension TryRecipeViewController: UICollectionViewDataSource,UICollectionViewDe
         if indexPath.row == 0 {
             label.text = "追加"
         }else{
-            label.text = "料理名"
+            let tryRecipe = tryRecipes[indexPath.row - 1]
+            label.text = tryRecipe.name
         }
         
         return cell
@@ -67,3 +97,5 @@ extension TryRecipeViewController: UICollectionViewDataSource,UICollectionViewDe
     }
     
 }
+
+

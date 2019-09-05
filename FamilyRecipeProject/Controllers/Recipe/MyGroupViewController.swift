@@ -16,7 +16,14 @@ class MyGroupViewController: UIViewController {
     var group: Group? = nil
     
     @IBOutlet weak var recipeCollection: UICollectionView!
-    var recipes : [Recipe] = []
+    var recipes : [Recipe] = []{
+        didSet{
+            recipeCollection.reloadData()
+            
+        }
+    }
+            
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,22 +33,45 @@ class MyGroupViewController: UIViewController {
 
         let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
         group = appDelegate.group
-    }
+        
+        
+        //レシピを表示させたい
+        let db = Firestore.firestore()
+        db.collection("groups").document("syj3D8VOvkazBwsB3duE").collection("recipes").getDocuments { (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else{
+                return
+            }
+            //レシピがあった時の処理
+            var recipes:[Recipe] = [] {
+                didSet{
+                    self.recipes = recipes
+                }
+            }
+            
+            for document in documents {
+                let recipeId = document.documentID
+                let recipeName = document.get("name") as! String
+                let recipeMessage = document.get("message") as! String
+                let recipeImage = document.get("photoData") as! Data
+                
+                let recipe = Recipe(uid: recipeId, name: recipeName, photoData: recipeImage,message: recipeMessage)
+                recipes.append(recipe)
+            }
+            
+        }
     
-
+    }
     //グループ設定ボタンが押されたら
     @IBAction func didClickReSettingButton(_ sender: UIButton) {
         performSegue(withIdentifier: "toReSettingGroup", sender: nil)
     }
-    
-    
+
 
 }
 
-
 extension MyGroupViewController: UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return recipes.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -51,7 +81,8 @@ extension MyGroupViewController: UICollectionViewDelegate,UICollectionViewDataSo
         if indexPath.row == 0 {
            imageView.image = UIImage(named: "4")
         }else{
-            imageView.image = UIImage(named: "1")
+            let recipe  = recipes[indexPath.row - 1]
+            imageView.image = UIImage(data: recipe.photoData)
         }
         
         let label = cell.viewWithTag(2) as! UILabel
@@ -59,7 +90,8 @@ extension MyGroupViewController: UICollectionViewDelegate,UICollectionViewDataSo
         if indexPath.row == 0 {
             label.text = "追加"
         }else{
-            label.text = "料理名"
+            let recipe  = recipes[indexPath.row - 1]
+            label.text = recipe.name
         }
         
         return cell
@@ -72,8 +104,13 @@ extension MyGroupViewController: UICollectionViewDelegate,UICollectionViewDataSo
             performSegue(withIdentifier: "toShowRecipe", sender: nil)
         }
     }
+
+}
+
+
     
-    //tabとかnaviコントローラー挟んで、処理が面倒だったからappdelegateを使ってデータを渡してる！
+
+//tabとかnaviコントローラー挟んで、処理が面倒だったからappdelegateを使ってデータを渡してる！
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "toWriteRecipe" {
 //             let nextVC = segue.destination as! WriteRecipeViewController
@@ -81,5 +118,6 @@ extension MyGroupViewController: UICollectionViewDelegate,UICollectionViewDataSo
 //        }
 //
 //    }
-    
-}
+
+
+

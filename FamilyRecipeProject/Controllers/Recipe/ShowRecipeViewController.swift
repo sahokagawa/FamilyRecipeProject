@@ -20,37 +20,11 @@ class ShowRecipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let db = Firestore.firestore()
-        db.collection("groups").document("syj3D8VOvkazBwsB3duE").collection("recipes").getDocuments { (querySnapshot, error) in
-            guard let documents = querySnapshot?.documents else{
-                return
-            }
-            
-            //レシピがあった時の処理
-            
-            //            var recip:Recipe = Recipe(uid: <#String#>, name: name.text!, photoData: image , message: message) {
-            //                didSet{
-            //
-            //
-            //            }
-            //        }
-            
-            
-            for document in documents {
-                let recipeId = document.get("recipeId") as! String
-                db.collection("recipes").document(recipeId).getDocument(completion: { (documentSnapshot, error) in
-                    if let document = documentSnapshot,documentSnapshot!.exists{
-                        let recipeName = document.get("name") as! String
-                        let recipeMessage = document.get("message")
 
-                    }
-                })
-            }
 
         }
 
     }
     
     
-    
-}
+

@@ -58,7 +58,9 @@ class ViewController: UIViewController {
                         let groupName = document.get("groupName") as! String
                         let groupImage = document.get("photoData") as! Data
         
-                        let group = Group(uid: document.documentID, name: groupName, photoData: groupImage)
+                        let group = Group(uid: document.documentID,
+                            name: groupName,
+                            photoData: groupImage)
                         groups.append(group)
                     }
                 })
