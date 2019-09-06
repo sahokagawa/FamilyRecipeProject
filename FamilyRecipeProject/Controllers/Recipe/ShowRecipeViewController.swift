@@ -13,7 +13,8 @@ class ShowRecipeViewController: UIViewController {
     
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var message: UITextView!
+    @IBOutlet weak var message: UILabel!
+    
     
     var recipe: Recipe? = nil
     

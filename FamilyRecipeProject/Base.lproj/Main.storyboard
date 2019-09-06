@@ -522,19 +522,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Jb8-zc-3Ue">
-                                <rect key="frame" x="51" y="638" width="298" height="147"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f40-Ac-BQh">
+                                <rect key="frame" x="75" y="671" width="252" height="155"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.92348977180000003" blue="0.94485771419999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="pJh-PW-4i9"/>
                     </view>
                     <connections>
-                        <outlet property="message" destination="Jb8-zc-3Ue" id="OVK-bl-kQj"/>
+                        <outlet property="message" destination="f40-Ac-BQh" id="thp-Yy-5Hp"/>
                         <outlet property="name" destination="fWB-8u-rn7" id="49w-sr-1f6"/>
                         <outlet property="recipeImage" destination="AT7-I9-nt1" id="qIk-rC-zWd"/>
                     </connections>
@@ -596,20 +597,20 @@
                                     <action selector="createRecipe:" destination="4bS-zZ-hfQ" eventType="touchUpInside" id="poN-HB-gtZ"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x4B-Wb-fZi">
-                                <rect key="frame" x="38" y="650" width="317" height="143"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="e8j-B6-3Y8">
+                                <rect key="frame" x="38" y="650" width="351" height="169"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
+                                <color key="backgroundColor" red="0.99705451730000005" green="0.98539701280000003" blue="0.69880326370000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="5mg-pr-qGk"/>
                     </view>
                     <connections>
                         <outlet property="buttonImage" destination="bpQ-Y9-nPu" id="3Xq-7N-nZK"/>
-                        <outlet property="message" destination="x4B-Wb-fZi" id="CUh-oK-jCX"/>
+                        <outlet property="message" destination="e8j-B6-3Y8" id="ClO-Bx-9vL"/>
                         <outlet property="recipeName" destination="Ve9-NL-zFh" id="FPy-VL-VuJ"/>
                     </connections>
                 </viewController>
@@ -636,19 +637,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TZ3-ch-f8A">
-                                <rect key="frame" x="95" y="480" width="240" height="128"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dn6-7f-OIn">
+                                <rect key="frame" x="87" y="576" width="240" height="163"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.92348977180000003" blue="0.94485771419999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="JHK-jf-2av"/>
                     </view>
                     <connections>
-                        <outlet property="message" destination="TZ3-ch-f8A" id="AmN-82-mH5"/>
+                        <outlet property="message" destination="dn6-7f-OIn" id="kOy-HW-kJp"/>
                         <outlet property="name" destination="CYI-Rz-hWJ" id="xIh-rQ-xan"/>
                         <outlet property="tryRecipeImage" destination="AL9-4s-NK5" id="XXn-s0-9I7"/>
                     </connections>
@@ -745,13 +747,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t2I-K8-Ofi">
-                                <rect key="frame" x="83" y="533" width="248" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v46-Uv-v3q">
                                 <rect key="frame" x="255" y="99" width="123" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -760,13 +755,20 @@
                                     <action selector="createTryRecipe:" destination="sTG-Gf-Oup" eventType="touchUpInside" id="X3G-ou-hOK"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8dt-CR-4Pt">
+                                <rect key="frame" x="83" y="576" width="240" height="159"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.99705451730000005" green="0.98539701280000003" blue="0.69880326370000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="7EO-a1-yuv"/>
                     </view>
                     <connections>
                         <outlet property="tryRecipeImage" destination="b9M-3s-glP" id="nRu-s8-fvW"/>
-                        <outlet property="tryRecipeMessage" destination="t2I-K8-Ofi" id="QZh-me-ubc"/>
+                        <outlet property="tryRecipeMessage" destination="8dt-CR-4Pt" id="ODS-Me-DK7"/>
                         <outlet property="tryRecipeName" destination="Xf9-Qo-tEh" id="BY1-ST-foG"/>
                     </connections>
                 </viewController>

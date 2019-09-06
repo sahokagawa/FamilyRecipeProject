@@ -12,7 +12,8 @@ class ShowTryRecipeViewController: UIViewController {
     
     @IBOutlet weak var tryRecipeImage: UIImageView!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var message: UITextView!
+    @IBOutlet weak var message: UILabel!
+    
     
     var tryRecipe: TryRecipe? = nil
     

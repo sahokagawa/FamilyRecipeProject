@@ -20,7 +20,8 @@ class WriteRecipeViewController: UIViewController,UIImagePickerControllerDelegat
     //料理の写真
     @IBOutlet weak var buttonImage: UIButton!
     //メッセージ
-    @IBOutlet weak var message: UITextField!
+    @IBOutlet weak var message: UITextView!
+    
     
     
     

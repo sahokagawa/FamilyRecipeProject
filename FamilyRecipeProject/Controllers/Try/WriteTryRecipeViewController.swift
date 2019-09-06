@@ -17,7 +17,8 @@ class WriteTryRecipeViewController: UIViewController,UIImagePickerControllerDele
     
     @IBOutlet weak var tryRecipeName: UITextField!
     @IBOutlet weak var tryRecipeImage: UIButton!
-    @IBOutlet weak var tryRecipeMessage: UITextField!
+    @IBOutlet weak var tryRecipeMessage: UITextView!
+    
     
     
     
