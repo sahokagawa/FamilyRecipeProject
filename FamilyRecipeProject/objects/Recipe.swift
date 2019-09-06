@@ -13,4 +13,8 @@ struct Recipe {
     let name: String
     let photoData: Data
     let message: String
+    let ingredients: String
+    let howTo: String
+    
+    
 }

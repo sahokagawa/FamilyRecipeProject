@@ -21,7 +21,10 @@ class WriteRecipeViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var buttonImage: UIButton!
     //メッセージ
     @IBOutlet weak var message: UITextView!
-    
+    //材料
+    @IBOutlet weak var ingredients: UITextView!
+    //作り方
+    @IBOutlet weak var howTo: UITextView!
     
     
     
@@ -57,11 +60,15 @@ class WriteRecipeViewController: UIViewController,UIImagePickerControllerDelegat
         let data = buttonImage.imageView?.image?.jpegData(compressionQuality: 0.1)
         let name = recipeName.text
         let messageFor = message.text
+        let point1 = ingredients.text
+        let point2 = howTo.text
         let db = Firestore.firestore()
         db.collection("groups").document(group!.uid).collection("recipes").addDocument(data: [
             "name": name as Any,
             "message": messageFor as Any,
-            "photoData": data as Any
+            "photoData": data as Any,
+            "ingredients" :point1 as Any,
+            "howTo":point2 as Any
             ])
     }
     

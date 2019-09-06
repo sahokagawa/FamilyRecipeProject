@@ -84,7 +84,6 @@ class ViewController: UIViewController {
     }
     
     //アカウント削除ボタン
-    //削除してそのあとbackしたら、消したはずのアカウントの画面になれてしまう
     @IBAction func deleteUserButton(_ sender: UIButton) {
         let user = Auth.auth().currentUser
         

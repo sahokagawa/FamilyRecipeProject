@@ -53,8 +53,10 @@ class MyGroupViewController: UIViewController {
                 let recipeName = document.get("name") as! String
                 let recipeMessage = document.get("message") as! String
                 let recipeImage = document.get("photoData") as! Data
+                let recipeIngredients = document.get("ingredients") as! String
+                let recipeHowTo = document.get("howTo") as! String
                 
-                let recipe = Recipe(uid: recipeId, name: recipeName, photoData: recipeImage,message: recipeMessage)
+                let recipe = Recipe(uid: recipeId, name: recipeName, photoData: recipeImage,message: recipeMessage, ingredients: recipeIngredients, howTo: recipeHowTo)
                 recipes.append(recipe)
             }
             
@@ -64,6 +66,7 @@ class MyGroupViewController: UIViewController {
     //グループ設定ボタンが押されたら
     @IBAction func didClickReSettingButton(_ sender: UIButton) {
         performSegue(withIdentifier: "toReSettingGroup", sender: nil)
+        
     }
 
 

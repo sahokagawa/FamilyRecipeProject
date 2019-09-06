@@ -14,6 +14,10 @@ class ShowRecipeViewController: UIViewController {
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var message: UILabel!
+    @IBOutlet weak var ingredients: UILabel!
+    @IBOutlet weak var howTo: UILabel!
+    
+    
     
     
     var recipe: Recipe? = nil
@@ -24,6 +28,8 @@ class ShowRecipeViewController: UIViewController {
         recipeImage.image = UIImage(data: recipe!.photoData)
         name.text = recipe?.name
         message.text = recipe?.message
+        ingredients.text = recipe?.ingredients
+        howTo.text = recipe?.howTo
 
 
 
