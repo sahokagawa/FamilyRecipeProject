@@ -70,6 +70,36 @@ class ViewController: UIViewController {
         }
         
     }
+    
+    //ログアウトボタンが押されたら
+    @IBAction func logoutButton(_ sender: UIButton) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            performSegue(withIdentifier: "toBackSignIn", sender: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+    }
+    
+    //アカウント削除ボタン
+    //削除してそのあとbackしたら、消したはずのアカウントの画面になれてしまう
+    @IBAction func deleteUserButton(_ sender: UIButton) {
+        let user = Auth.auth().currentUser
+        
+        user?.delete { error in
+            if let error = error {
+                print("エラー")
+            } else {
+            self.performSegue(withIdentifier: "toBackSignIn", sender: nil)
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+            }
+        }
+    }
+    
+    
+    
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {

@@ -13,7 +13,7 @@
         <!--Sigin Up View Controller-->
         <scene sceneID="s3S-RB-mGy">
             <objects>
-                <viewController id="5Fl-4X-r6j" customClass="SiginUpViewController" customModule="FamilyRecipeProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signIn" id="5Fl-4X-r6j" customClass="SiginUpViewController" customModule="FamilyRecipeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="exH-l3-U2S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,11 +170,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BaN-aB-zay">
-                                <rect key="frame" x="288" y="79" width="106" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="ログアウト"/>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dIe-gb-lVu">
                                 <rect key="frame" x="10" y="175" width="394" height="573"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -209,16 +204,36 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQI-H9-TCs">
+                                <rect key="frame" x="285" y="113" width="108" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="アカウント削除"/>
+                                <connections>
+                                    <action selector="deleteUserButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xrd-bG-Aim"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Agq-Ns-2jv"/>
+                    <navigationItem key="navigationItem" id="Agq-Ns-2jv">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Pih-tl-80J">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BaN-aB-zay">
+                                <rect key="frame" x="288" y="0.0" width="106" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="ログアウト"/>
+                                <connections>
+                                    <action selector="logoutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S2z-lZ-6nQ"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="dIe-gb-lVu" id="19o-FC-5ac"/>
                         <outlet property="loginUserLabel" destination="4cj-7f-Obq" id="zao-AG-foH"/>
                         <segue destination="ekU-VJ-OMu" kind="show" identifier="toChooseMember" id="lI2-2x-0Re"/>
                         <segue destination="xeG-g5-OjN" kind="show" identifier="toMyGroup" id="nXE-N1-XLV"/>
+                        <segue destination="5Fl-4X-r6j" kind="show" identifier="toBackSignIn" id="nCH-HB-tl2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -803,7 +818,7 @@
         <!--マイページ-->
         <scene sceneID="9fB-Uk-KCi">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XKR-iM-9ah" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="myPage" automaticallyAdjustsScrollViewInsets="NO" id="XKR-iM-9ah" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="マイページ" id="8Gp-xL-i5X"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9Jb-JY-ubq">
@@ -822,6 +837,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="JJc-JD-Age"/>
-        <segue reference="Uv4-G9-yCw"/>
+        <segue reference="lI2-2x-0Re"/>
+        <segue reference="nCH-HB-tl2"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        switchHomeView()
+        
+        
         return true
     }
 
@@ -45,6 +48,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+
+    func switchHomeView() {
+        let user = Auth.auth().currentUser
+        
+        let storyboard:UIStoryboard =  UIStoryboard(name: "Main",bundle:nil)
+        var viewController:UIViewController
+        
+        //表示するビューコントローラーを指定
+        if  user == nil {
+            // 未ログインの場合
+            viewController = storyboard.instantiateViewController(withIdentifier: "signIn") as UIViewController
+        } else {
+            // ログイン済みの場合
+            viewController = storyboard.instantiateViewController(withIdentifier: "myPage") as UIViewController
+        }
+        
+        window?.rootViewController = viewController
+    }
+    
 
 
 }
