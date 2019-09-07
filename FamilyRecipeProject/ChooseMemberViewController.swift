@@ -17,12 +17,15 @@ class ChooseMemberViewController: UIViewController {
     @IBOutlet weak var searchUser: UITextField!
     
     //検索結果
-    @IBOutlet weak var resultTable: UITableView!
+    @IBOutlet weak var resultCollection: UICollectionView!
+    //    @IBOutlet weak var resultTable: UITableView!
     var users :[User] = [] {
         didSet {
-            resultTable.reloadData()
+            resultCollection.reloadData()
         }
     }
+    
+    
     
     
     
@@ -41,10 +44,12 @@ class ChooseMemberViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       resultTable.dataSource = self
-       resultTable.delegate = self
+//       resultTable.dataSource = self
+//       resultTable.delegate = self
        choosenUser.delegate = self
        choosenUser.dataSource = self
+        resultCollection.delegate = self
+        resultCollection.dataSource = self
     }
     
     
@@ -97,58 +102,92 @@ class ChooseMemberViewController: UIViewController {
 
 
 
-extension ChooseMemberViewController : UITableViewDelegate,UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
-    }
+//extension ChooseMemberViewController : UITableViewDelegate,UITableViewDataSource{
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return users.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+//        let userName = users[indexPath.row]
+//
+//        let imageView = cell.viewWithTag(1) as! UIImageView
+//        imageView.af_setImage(
+//            withURL: URL(string: userName.photoUrl)!,
+//            placeholderImage: UIImage(named: "Placeholder")!,
+//            imageTransition: .curlUp(0.2)
+//        )
+//
+//        let label = cell.viewWithTag(2) as! UILabel
+//        label.text = userName.name
+//        return cell
+//    }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let userName = users[indexPath.row]
-        
-        let imageView = cell.viewWithTag(1) as! UIImageView
-        imageView.af_setImage(
-            withURL: URL(string: userName.photoUrl)!,
-            placeholderImage: UIImage(named: "Placeholder")!,
-            imageTransition: .curlUp(0.2)
-        )
-        
-        let label = cell.viewWithTag(2) as! UILabel
-        label.text = userName.name
-        return cell
-    }
-    
     //セルがクリックされたら
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let user = Auth.auth().currentUser
 //        let uid = user?.uid
 //        let db = Firestore.firestore()
 //        db.collection("groups").document(documentId).collection("users").addDocument(data: ["uid" :uid as Any])
-        selectedUsers.append(users[indexPath.row])
-    }
 
-}
+//        selectedUsers.append(users[indexPath.row])
+//    }
+//
+//}
 
 extension ChooseMemberViewController: UICollectionViewDelegate,UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return selectedUsers.count
+        
+        if collectionView == self.choosenUser {
+            return selectedUsers.count
+        } else  if collectionView == self.resultCollection {
+            return users.count
+        }
+        return 0
     }
+    
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        let userName = selectedUsers[indexPath.row]
         
-        let imageView = cell.viewWithTag(1) as! UIImageView
-        imageView.af_setImage(
-            withURL: URL(string: userName.photoUrl)!,
-            placeholderImage: UIImage(named: "Placeholder")!,
-            imageTransition: .curlUp(0.2)
-        )
+        if collectionView == self.resultCollection {
+            
+            func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+                let user = Auth.auth().currentUser
+                let uid = user?.uid
+                let db = Firestore.firestore()
+                db.collection("groups").document(documentId).collection("users").addDocument(data: ["uid" :uid as Any])
+                selectedUsers.append(users[indexPath.row])
+            }
+            let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath)
+            let userName = users[indexPath.row]
+            let imageView = cell2.viewWithTag(1) as! UIImageView
+            imageView.af_setImage(withURL: URL(string: userName.photoUrl)!,placeholderImage: UIImage(named: "Placeholder")!,imageTransition: .curlUp(0.2)
+            )
+            let label = cell2.viewWithTag(2) as! UILabel
+            label.text = userName.name
+            return cell2
+            
+        }else if collectionView == self.choosenUser {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+            let userName = selectedUsers[indexPath.row]
+            let imageView = cell.viewWithTag(1) as! UIImageView
+            imageView.af_setImage(
+                withURL: URL(string: userName.photoUrl)!,
+                placeholderImage: UIImage(named: "Placeholder")!,
+                imageTransition: .curlUp(0.2))
+            let label = cell.viewWithTag(2) as! UILabel
+            label.text = userName.name
+            return cell
+            
+        }
         
-        let label = cell.viewWithTag(2) as! UILabel
-        label.text = userName.name
-        return cell
+        return UICollectionViewCell()
+       
     }
     
     
+   
 }
+
