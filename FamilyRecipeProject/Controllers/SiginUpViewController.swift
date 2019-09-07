@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import RevealingSplashView
 
 class SiginUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
@@ -21,6 +22,18 @@ class SiginUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        //起動画面
+        let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "first")!,iconInitialSize: CGSize(width: 200, height: 200), backgroundColor: UIColor(red:255.0, green:255.0, blue:255.0, alpha:1.0))
+        
+        //Adds the revealing splash view as a sub view
+        self.view.addSubview(revealingSplashView)
+        revealingSplashView.animationType = SplashAnimationType.swingAndZoomOut
+        //Starts animation
+        revealingSplashView.startAnimation(){
+            print("Completed")
+        }
 
         //UITextFieldのデリゲート
         mailForm.delegate = self

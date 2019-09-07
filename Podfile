@@ -11,4 +11,6 @@ target 'FamilyRecipeProject' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'AlamofireImage'
+  pod 'RevealingSplashView'
+  pod 'IQKeyboardManagerSwift'
 end
