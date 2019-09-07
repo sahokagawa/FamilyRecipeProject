@@ -98,6 +98,7 @@ class ChooseMemberViewController: UIViewController {
         }
         
     }
+    
 }
 
 
@@ -152,13 +153,6 @@ extension ChooseMemberViewController: UICollectionViewDelegate,UICollectionViewD
         
         if collectionView == self.resultCollection {
             
-            func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-                let user = Auth.auth().currentUser
-                let uid = user?.uid
-                let db = Firestore.firestore()
-                db.collection("groups").document(documentId).collection("users").addDocument(data: ["uid" :uid as Any])
-                selectedUsers.append(users[indexPath.row])
-            }
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath)
             let userName = users[indexPath.row]
             let imageView = cell2.viewWithTag(1) as! UIImageView
@@ -167,7 +161,6 @@ extension ChooseMemberViewController: UICollectionViewDelegate,UICollectionViewD
             let label = cell2.viewWithTag(2) as! UILabel
             label.text = userName.name
             return cell2
-            
         }else if collectionView == self.choosenUser {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
@@ -182,12 +175,20 @@ extension ChooseMemberViewController: UICollectionViewDelegate,UICollectionViewD
             return cell
             
         }
-        
         return UICollectionViewCell()
-       
     }
     
+    //セルがクリックされたら
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if collectionView == self.resultCollection {
+            let user = Auth.auth().currentUser
+            let uid = user?.uid
+            let db = Firestore.firestore()
+            db.collection("groups").document(documentId).collection("users").addDocument(data: ["uid" :uid as Any])
+            selectedUsers.append(users[indexPath.row])
+        }
+    }
     
-   
 }
 
