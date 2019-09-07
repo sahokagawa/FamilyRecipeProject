@@ -85,16 +85,28 @@ class ViewController: UIViewController {
     
     //アカウント削除ボタン
     @IBAction func deleteUserButton(_ sender: UIButton) {
-        let user = Auth.auth().currentUser
         
-        user?.delete { error in
-            if let error = error {
-                print("エラー")
-            } else {
-            self.performSegue(withIdentifier: "toBackSignIn", sender: nil)
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        //アラート
+        let alert =  UIAlertController(title: "アカウントを削除しますか", message: "選択してください", preferredStyle:.alert)
+        let yesAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            let user = Auth.auth().currentUser
+            user?.delete { error in
+                if let error = error {
+                    print("エラー")
+                } else {
+                    self.performSegue(withIdentifier: "toBackSignIn", sender: nil)
+                    self.navigationController?.setNavigationBarHidden(true, animated: true)
+                }
             }
+           print("削除")
         }
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (UIAlertAction) in
+        }
+        alert.addAction(yesAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated:true , completion: nil)
+        
     }
     
     
