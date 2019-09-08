@@ -11,7 +11,7 @@ import Firebase
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var loginUserLabel: UILabel!
+//    @IBOutlet weak var loginUserLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
     var groups : [Group] = [] {
@@ -24,6 +24,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "gohan.png")!)
+        
+        //コレクションのレイアウト 余白
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
+        layout.itemSize = CGSize(width:180, height:180)
+        collectionView.collectionViewLayout = layout
+        
+    
         
         //ログインしているユーザーの情報を取得
          let user = Auth.auth().currentUser!
@@ -32,7 +41,12 @@ class ViewController: UIViewController {
         //let db = Firestore.firestore()
         //let userName = db.collection("users").document("name")
         //print(user.displayName)
-        loginUserLabel.text = user.displayName
+        
+//        loginUserLabel.text = user.displayName! + "のマイページ"
+        self.navigationItem.title = user.displayName! + "のマイページ"
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 1.000, green: 0.957, blue: 0.747, alpha: 1)
+//        let settingImage = UIBarButtonItem(image: UIImage(named: "setting"), style: .plain, target: self, action: nil)
+//        self.navigationItem.rightBarButtonItem = settingImage
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -68,46 +82,53 @@ class ViewController: UIViewController {
             }
             
         }
-        
     }
+    
+    
+    
+    //セッティングボタンが押されたら
+    @IBAction func settingButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "toSetting", sender: nil)
+    }
+    
     
     //ログアウトボタンが押されたら
-    @IBAction func logoutButton(_ sender: UIButton) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            performSegue(withIdentifier: "toBackSignIn", sender: nil)
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-        
-    }
+//    @IBAction func logoutButton(_ sender: UIButton) {
+//        let firebaseAuth = Auth.auth()
+//        do {
+//            try firebaseAuth.signOut()
+//            performSegue(withIdentifier: "toBackSignIn", sender: nil)
+//        } catch let signOutError as NSError {
+//            print ("Error signing out: %@", signOutError)
+//        }
+//
+//    }
     
     //アカウント削除ボタン
-    @IBAction func deleteUserButton(_ sender: UIButton) {
-        
-        //アラート
-        let alert =  UIAlertController(title: "アカウントを削除しますか", message: "選択してください", preferredStyle:.alert)
-        let yesAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-            let user = Auth.auth().currentUser
-            user?.delete { error in
-                if let error = error {
-                    print("エラー")
-                } else {
-                    self.performSegue(withIdentifier: "toBackSignIn", sender: nil)
-                    self.navigationController?.setNavigationBarHidden(true, animated: true)
-                }
-            }
-           print("削除")
-        }
-        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (UIAlertAction) in
-        }
-        alert.addAction(yesAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated:true , completion: nil)
-        
-    }
+//    @IBAction func deleteUserButton(_ sender: UIButton) {
+//
+//        //アラート
+//        let alert =  UIAlertController(title: "アカウントを削除しますか", message: "選択してください", preferredStyle:.alert)
+//        let yesAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+//            let user = Auth.auth().currentUser
+//            user?.delete { error in
+//                if let error = error {
+//                    print("エラー")
+//                } else {
+//                    self.performSegue(withIdentifier: "toBackSignIn", sender: nil)
+//                    self.navigationController?.setNavigationBarHidden(true, animated: true)
+//                }
+//            }
+//           print("削除")
+//        }
+//        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (UIAlertAction) in
+//        }
+//        alert.addAction(yesAction)
+//        alert.addAction(cancelAction)
+//
+//        present(alert, animated:true , completion: nil)
+//
+//    }
     
     
     
@@ -120,12 +141,13 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        
+        cell.layer.cornerRadius = 10
+        cell.layer.borderWidth = 0.5
         
         //collectionViewに表示される画像
         let imageView = cell.viewWithTag(1) as! UIImageView
         if indexPath.row == 0 {
-            imageView.image = UIImage(named: "4")
+            imageView.image = UIImage(named: "plus")
         } else {
             let group = groups[indexPath.row - 1]
             imageView.image = UIImage(data: group.photoData)
@@ -136,7 +158,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         
         if indexPath.row == 0 {
             
-            label.text = "追加"
+            label.text = "グループを作成する"
         }else{
             let group = groups[indexPath.row - 1]
             label.text = group.name
@@ -154,7 +176,9 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
             appDelegate.group = group
             performSegue(withIdentifier: "toMyGroup", sender: nil)//group)
         }
+        
     }
+    
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "toMyGroup" {

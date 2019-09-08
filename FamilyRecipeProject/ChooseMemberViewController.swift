@@ -50,6 +50,8 @@ class ChooseMemberViewController: UIViewController {
        choosenUser.dataSource = self
         resultCollection.delegate = self
         resultCollection.dataSource = self
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "gohan.png")!)
     }
     
     

@@ -17,6 +17,10 @@ class SiginUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
     @IBOutlet weak var nameForm: UITextField!
     @IBOutlet weak var mailForm: UITextField!
     @IBOutlet weak var passForm: UITextField!
+    @IBOutlet weak var siginUpButton: UIButton!
+    @IBOutlet weak var logInButton: UIButton!
+    
+    
     
     var documentId = ""
     
@@ -24,9 +28,15 @@ class SiginUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
         super.viewDidLoad()
         
         
-        //起動画面
-        let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "first")!,iconInitialSize: CGSize(width: 200, height: 200), backgroundColor: UIColor(red:255.0, green:255.0, blue:255.0, alpha:1.0))
+        //スクロール
+//        let scrollView = UIScrollView()
+//        scrollView.frame = self.view.frame
+//        scrollView.contentSize = CGSize(width:self.view.frame.width, height:1000)
+//        self.view.addSubview(scrollView)
         
+        
+        //起動画面　スプラッシュ
+        let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "first")!,iconInitialSize: CGSize(width: 200, height: 200), backgroundColor: UIColor(red:255.0, green:255.0, blue:255.0, alpha:1.0))
         //Adds the revealing splash view as a sub view
         self.view.addSubview(revealingSplashView)
         revealingSplashView.animationType = SplashAnimationType.swingAndZoomOut
@@ -39,11 +49,16 @@ class SiginUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
         mailForm.delegate = self
         passForm.delegate = self
         
-        //UITextFieldに枠線,角丸を施す
+        //見た目
         mailForm.layer.borderWidth = 1
         mailForm.layer.cornerRadius = 10
         passForm.layer.borderWidth = 1
         passForm.layer.cornerRadius = 10
+        nameForm.layer.borderWidth = 1
+        nameForm.layer.cornerRadius = 10
+        buttonImage.layer.cornerRadius = 10
+        siginUpButton.layer.cornerRadius = 10
+        logInButton.layer.cornerRadius = 10
         
     }
     

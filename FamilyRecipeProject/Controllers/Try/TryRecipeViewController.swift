@@ -68,6 +68,8 @@ extension TryRecipeViewController: UICollectionViewDataSource,UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        cell.layer.cornerRadius = 10
+        cell.layer.borderWidth = 0.5
         let imageView = cell.viewWithTag(1) as! UIImageView
         if indexPath.row == 0 {
             imageView.image = UIImage(named: "4")
