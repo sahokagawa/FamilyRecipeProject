@@ -28,6 +28,7 @@
 		31A3D40323161A93004AC9EF /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A3D40223161A93004AC9EF /* Group.swift */; };
 		31A3D40523161AA0004AC9EF /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A3D40423161AA0004AC9EF /* Recipe.swift */; };
 		31B3F9C7232576D400A5AE3A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B3F9C6232576D400A5AE3A /* SettingViewController.swift */; };
+		31B3F9C92325850C00A5AE3A /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B3F9C82325850C00A5AE3A /* SettingTableViewController.swift */; };
 		422EDBB6D01505FDFB063E33 /* Pods_FamilyRecipeProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87CC9E046BF12BFFEA5BEC32 /* Pods_FamilyRecipeProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		31A3D40223161A93004AC9EF /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		31A3D40423161AA0004AC9EF /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		31B3F9C6232576D400A5AE3A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = ../../SettingViewController.swift; sourceTree = "<group>"; };
+		31B3F9C82325850C00A5AE3A /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		4ADAE1ACB77D016329E377D0 /* Pods-FamilyRecipeProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamilyRecipeProject.release.xcconfig"; path = "Target Support Files/Pods-FamilyRecipeProject/Pods-FamilyRecipeProject.release.xcconfig"; sourceTree = "<group>"; };
 		87CC9E046BF12BFFEA5BEC32 /* Pods_FamilyRecipeProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FamilyRecipeProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -95,6 +97,7 @@
 		31A3D3DA231543AF004AC9EF = {
 			isa = PBXGroup;
 			children = (
+				31B3F9C82325850C00A5AE3A /* SettingTableViewController.swift */,
 				31A3D3E5231543AF004AC9EF /* FamilyRecipeProject */,
 				31A3D3E4231543AF004AC9EF /* Products */,
 				806391AC4A6AFBD4E14454E7 /* Pods */,
@@ -290,6 +293,7 @@
 				31A3D40523161AA0004AC9EF /* Recipe.swift in Sources */,
 				3107D5C223179288000AA09E /* MyGroupViewController.swift in Sources */,
 				31B3F9C7232576D400A5AE3A /* SettingViewController.swift in Sources */,
+				31B3F9C92325850C00A5AE3A /* SettingTableViewController.swift in Sources */,
 				315192D2231E6EDB0073C304 /* ShowTryRecipeViewController.swift in Sources */,
 				3107D5C42317C9D7000AA09E /* SettingGroupViewController.swift in Sources */,
 				31A3D3E9231543AF004AC9EF /* ViewController.swift in Sources */,
