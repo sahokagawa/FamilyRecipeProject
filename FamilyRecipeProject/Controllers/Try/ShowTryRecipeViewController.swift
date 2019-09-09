@@ -21,6 +21,8 @@ class ShowTryRecipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "作ってみました"
+        
        tryRecipeImage.image = UIImage(data: tryRecipe!.photoData)
         name.text = tryRecipe?.name
         message.text = tryRecipe?.message

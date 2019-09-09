@@ -55,10 +55,10 @@ class ChooseMemberViewController: UIViewController {
         
         searchUser.layer.borderWidth = 1
         searchUser.layer.cornerRadius = 10
-//        SettingButton.layer.borderWidth = 1
-//        searchButton.layer.borderWidth = 1
-//        SettingButton.layer.cornerRadius = 1
-//        searchButton.layer.cornerRadius = 1
+        SettingButton.layer.borderWidth = 1
+        searchButton.layer.borderWidth = 1
+        SettingButton.layer.cornerRadius = 10
+        searchButton.layer.cornerRadius = 10
         
         
         //ナビゲーション

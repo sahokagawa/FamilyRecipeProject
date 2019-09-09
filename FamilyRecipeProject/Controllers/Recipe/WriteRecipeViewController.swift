@@ -26,6 +26,9 @@ class WriteRecipeViewController: UIViewController,UIImagePickerControllerDelegat
     //作り方
     @IBOutlet weak var howTo: UITextView!
     
+    @IBOutlet weak var createButton: UIButton!
+    
+    
     
     
     
@@ -33,6 +36,22 @@ class WriteRecipeViewController: UIViewController,UIImagePickerControllerDelegat
         super.viewDidLoad()
         
         self.navigationItem.title = "レシピを書く"
+        
+        createButton.layer.cornerRadius = 10
+        createButton.layer.borderWidth = 1
+        
+        ingredients.layer.borderWidth = 5
+        ingredients.layer.borderColor = UIColor.lightGray.cgColor
+        ingredients.layer.cornerRadius = 10
+        
+        howTo.layer.borderWidth = 5
+        howTo.layer.borderColor = UIColor.lightGray.cgColor
+        howTo.layer.cornerRadius = 10
+        
+        message.layer.borderWidth = 5
+        message.layer.borderColor = UIColor.lightGray.cgColor
+        message.layer.cornerRadius = 10
+        
         
         let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
         group = appDelegate.group

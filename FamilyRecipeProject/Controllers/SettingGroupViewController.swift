@@ -17,9 +17,15 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
     
     @IBOutlet weak var buttonImage: UIButton!
     @IBOutlet weak var groupName: UITextField!
+    @IBOutlet weak var createButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = "グループの設定"
+        createButton.layer.borderWidth = 1
+        createButton.layer.cornerRadius = 10
 
         
     }
