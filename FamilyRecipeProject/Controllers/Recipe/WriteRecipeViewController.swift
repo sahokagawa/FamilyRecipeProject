@@ -32,6 +32,8 @@ class WriteRecipeViewController: UIViewController,UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "レシピを書く"
+        
         let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
         group = appDelegate.group
 

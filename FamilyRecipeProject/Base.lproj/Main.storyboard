@@ -193,7 +193,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dIe-gb-lVu">
-                                <rect key="frame" x="0.0" y="172" width="414" height="549"/>
+                                <rect key="frame" x="0.0" y="172" width="414" height="571"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bXK-BY-m2c">
@@ -235,6 +235,14 @@
                                     <action selector="settingButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qe4-HW-ozt"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYr-IQ-YZ9">
+                                <rect key="frame" x="192" y="119" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="　ログアウト"/>
+                                <connections>
+                                    <action selector="logoutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T44-TC-XZJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -245,11 +253,12 @@
                         <segue destination="ekU-VJ-OMu" kind="show" identifier="toChooseMember" id="lI2-2x-0Re"/>
                         <segue destination="xeG-g5-OjN" kind="show" identifier="toMyGroup" id="nXE-N1-XLV"/>
                         <segue destination="SUc-Ss-NcM" kind="show" identifier="toSetting" id="UX9-JG-8B1"/>
+                        <segue destination="5Fl-4X-r6j" kind="show" identifier="toBackSignIn" id="Fqd-Lp-MmG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2482.608695652174" y="306.69642857142856"/>
+            <point key="canvasLocation" x="2259.4202898550725" y="158.03571428571428"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="0ab-Ss-QOV">
@@ -274,30 +283,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="メンバーを選択" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E8w-al-qFV">
-                                <rect key="frame" x="51" y="101" width="192" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPZ-4l-TBJ">
-                                <rect key="frame" x="275" y="92" width="88" height="30"/>
+                                <rect key="frame" x="286" y="107" width="108" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.84572689573084148" blue="0.60548508083944552" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" title="次へ"/>
                                 <connections>
                                     <action selector="toSettingGroup:" destination="ekU-VJ-OMu" eventType="touchUpInside" id="dIB-l4-4Go"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6in-nI-qEj">
-                                <rect key="frame" x="257" y="272" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="検索"/>
-                                <connections>
-                                    <action selector="searchButton:" destination="ekU-VJ-OMu" eventType="touchUpInside" id="5Cu-Ja-GVQ"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="検索" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P2L-LB-DD5">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="名前を入力" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P2L-LB-DD5">
                                 <rect key="frame" x="16" y="194" width="262" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -305,9 +302,9 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tDj-ap-VhJ">
-                                <rect key="frame" x="3" y="731" width="411" height="113"/>
+                                <rect key="frame" x="0.0" y="542" width="411" height="113"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.95891826800000002" blue="0.77020959479999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JPV-Do-887">
                                     <size key="itemSize" width="111" height="101"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -344,21 +341,21 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MsV-ZQ-T9c">
-                                <rect key="frame" x="0.0" y="336" width="414" height="200"/>
+                                <rect key="frame" x="0.0" y="268" width="414" height="266"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.95891826800000002" blue="0.77020959479999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Beo-au-x3n">
-                                    <size key="itemSize" width="414" height="88"/>
+                                    <size key="itemSize" width="414" height="98"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell2" id="QpT-zr-PoI">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="98"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="98"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U9u-nU-1MW">
@@ -372,19 +369,39 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVj-RA-LiT">
+                                                    <rect key="frame" x="0.0" y="86" width="414" height="2"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6in-nI-qEj">
+                                <rect key="frame" x="312" y="194" width="61" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.91751509899999995" green="0.61685192389999999" blue="0.2079525391" alpha="0.52549743650000003" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" title="検索"/>
+                                <connections>
+                                    <action selector="searchButton:" destination="ekU-VJ-OMu" eventType="touchUpInside" id="5Cu-Ja-GVQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Geo-zA-83T"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="グループ設定" id="tXp-Y9-4Od"/>
                     <connections>
-                        <outlet property="choosenUser" destination="tDj-ap-VhJ" id="SM8-KQ-hHe"/>
-                        <outlet property="resultCollection" destination="MsV-ZQ-T9c" id="GpQ-Wa-5ij"/>
+                        <outlet property="SettingButton" destination="gPZ-4l-TBJ" id="kD9-E0-vLV"/>
+                        <outlet property="choosenUser" destination="tDj-ap-VhJ" id="gQE-qB-nyh"/>
+                        <outlet property="resultCollection" destination="MsV-ZQ-T9c" id="Ik4-Dk-ylC"/>
+                        <outlet property="searchButton" destination="6in-nI-qEj" id="SDy-0Y-S4d"/>
                         <outlet property="searchUser" destination="P2L-LB-DD5" id="NI1-YP-KfL"/>
                         <segue destination="OZR-4h-xSm" kind="show" identifier="toSettingGroup" id="2MK-l8-wis"/>
                     </connections>
@@ -499,7 +516,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="YrD-yT-OK4"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="レシピ" id="CXF-hf-kRr"/>
+                    <tabBarItem key="tabBarItem" title="レシピ" image="recipe" id="CXF-hf-kRr"/>
                     <navigationItem key="navigationItem" id="Ifo-gn-hh0"/>
                     <connections>
                         <outlet property="recipeCollection" destination="gl6-bD-GDA" id="7OP-ev-LN0"/>
@@ -600,11 +617,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpQ-Y9-nPu">
-                                <rect key="frame" x="95" y="159" width="224" height="110"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpQ-Y9-nPu">
+                                <rect key="frame" x="95" y="141" width="224" height="142"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.99705451730000005" green="0.98539701280000003" blue="0.69880326370000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="画像を選択"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="タップして画像を選択" backgroundImage="gohan">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="selectRecipeImage:" destination="4bS-zZ-hfQ" eventType="touchUpInside" id="EOA-Li-wPd"/>
                                 </connections>
@@ -769,7 +789,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="tUH-6X-lPL"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="作ってみた" id="BX6-tY-vjH"/>
+                    <tabBarItem key="tabBarItem" title="作ってみた" image="cook" id="BX6-tY-vjH"/>
                     <connections>
                         <outlet property="tryRecipeCollection" destination="a4M-Z9-afH" id="cib-U1-Afa"/>
                         <segue destination="sTG-Gf-Oup" kind="show" identifier="toWriteTryRecipe" id="dpF-ak-kh6"/>
@@ -788,15 +808,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9M-3s-glP">
-                                <rect key="frame" x="83" y="184" width="248" height="135"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.99705451730000005" green="0.98539701280000003" blue="0.69880326370000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="selectTryRecipeImage:" destination="sTG-Gf-Oup" eventType="touchUpInside" id="VUQ-Xz-sin"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="料理名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xf9-Qo-tEh">
                                 <rect key="frame" x="83" y="356" width="248" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -826,6 +837,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9M-3s-glP">
+                                <rect key="frame" x="83" y="192" width="248" height="138"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="タップして画像を選択" backgroundImage="gohan">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectTryRecipeImage:" destination="sTG-Gf-Oup" eventType="touchUpInside" id="VUQ-Xz-sin"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="7EO-a1-yuv"/>
@@ -848,12 +870,11 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jtf-Ji-mS9">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="0.95891826800000002" blue="0.77020959479999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
                         <segue destination="uh9-by-4rb" kind="relationship" relationship="viewControllers" id="zjH-fY-sTp"/>
                         <segue destination="Def-Vv-ZbC" kind="relationship" relationship="viewControllers" id="JBr-pq-oLX"/>
-                        <segue destination="XKR-iM-9ah" kind="relationship" relationship="viewControllers" id="IPy-oz-2vG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cE1-mY-V7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -863,9 +884,8 @@
         <!--マイページ-->
         <scene sceneID="9fB-Uk-KCi">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F4O-FD-E6y" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="myPage" automaticallyAdjustsScrollViewInsets="NO" id="XKR-iM-9ah" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="マイページ" id="8Gp-xL-i5X"/>
+                    <tabBarItem key="tabBarItem" title="マイページ" image="home" id="8Gp-xL-i5X"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9Jb-JY-ubq">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -876,16 +896,21 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aia-nK-0Ww"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F4O-FD-E6y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1508.6956521739132" y="91.741071428571431"/>
         </scene>
     </scenes>
     <resources>
         <image name="camera" width="414" height="342"/>
+        <image name="cook" width="28" height="28"/>
+        <image name="gohan" width="1156" height="802"/>
+        <image name="home" width="28" height="28"/>
+        <image name="recipe" width="28" height="28"/>
         <image name="setting" width="274" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IPy-oz-2vG"/>
-        <segue reference="lI2-2x-0Re"/>
+        <segue reference="Uv4-G9-yCw"/>
+        <segue reference="Fqd-Lp-MmG"/>
     </inferredMetricsTieBreakers>
 </document>

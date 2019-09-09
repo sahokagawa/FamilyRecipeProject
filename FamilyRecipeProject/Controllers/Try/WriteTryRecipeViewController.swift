@@ -25,9 +25,10 @@ class WriteTryRecipeViewController: UIViewController,UIImagePickerControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "作ってみたを書く"
+        
         let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
         group = appDelegate.group
-
     }
     
     @IBAction func selectTryRecipeImage(_ sender: UIButton) {

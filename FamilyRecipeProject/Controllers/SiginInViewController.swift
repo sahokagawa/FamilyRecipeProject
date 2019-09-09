@@ -28,7 +28,7 @@ class SiginInViewController: UIViewController, UITextFieldDelegate {
         passForm.layer.borderWidth = 1
         passForm.layer.cornerRadius = 10
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "gohan.png")!)
+//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "gohan.png")!)
         
     }
     

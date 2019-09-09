@@ -28,6 +28,15 @@ class MyGroupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //コレクションのレイアウト 余白
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
+        layout.itemSize = CGSize(width:180, height:180)
+        recipeCollection.collectionViewLayout = layout
+        
+        //ナビゲーション
+        self.parent!.navigationItem.title = "グループの名前"
+        
         recipeCollection.delegate = self
         recipeCollection.dataSource = self
 

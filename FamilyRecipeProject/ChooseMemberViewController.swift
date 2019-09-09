@@ -14,6 +14,8 @@ class ChooseMemberViewController: UIViewController {
     
     
 
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var SettingButton: UIButton!
     @IBOutlet weak var searchUser: UITextField!
     
     //検索結果
@@ -24,9 +26,6 @@ class ChooseMemberViewController: UIViewController {
             resultCollection.reloadData()
         }
     }
-    
-    
-    
     
     
     var documentId = ""
@@ -46,12 +45,24 @@ class ChooseMemberViewController: UIViewController {
         
 //       resultTable.dataSource = self
 //       resultTable.delegate = self
-       choosenUser.delegate = self
-       choosenUser.dataSource = self
+        choosenUser.delegate = self
+        choosenUser.dataSource = self
         resultCollection.delegate = self
         resultCollection.dataSource = self
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "gohan.png")!)
+//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "gohan.png")!)
+        
+        
+        searchUser.layer.borderWidth = 1
+        searchUser.layer.cornerRadius = 10
+//        SettingButton.layer.borderWidth = 1
+//        searchButton.layer.borderWidth = 1
+//        SettingButton.layer.cornerRadius = 1
+//        searchButton.layer.cornerRadius = 1
+        
+        
+        //ナビゲーション
+        self.navigationItem.title = "メンバーを選択"
     }
     
     
@@ -78,9 +89,7 @@ class ChooseMemberViewController: UIViewController {
             }
             
             print(users)
-            //テーブルに表示させんといけん
-           
-            //19行目あたりのuserと検索結果あった時のuserは違うものだから、同じにする
+        //19行目あたりのuserと検索結果あった時のuserは違うものだから、同じにする
             self.users = users
             
         }
@@ -142,29 +151,45 @@ extension ChooseMemberViewController: UICollectionViewDelegate,UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if collectionView == self.choosenUser {
-            return selectedUsers.count
-        } else  if collectionView == self.resultCollection {
+        if collectionView == self.resultCollection {
             return users.count
         }
-        return 0
+        if collectionView == self.choosenUser {
+            return selectedUsers.count
+        }else{
+            return 0
+        }
     }
     
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        //検索結果コレクション
         if collectionView == self.resultCollection {
-            
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath)
-            let userName = users[indexPath.row]
-            let imageView = cell2.viewWithTag(1) as! UIImageView
-            imageView.af_setImage(withURL: URL(string: userName.photoUrl)!,placeholderImage: UIImage(named: "Placeholder")!,imageTransition: .curlUp(0.2)
+            let userName2 = users[indexPath.row]
+            let imageView2 = cell2.viewWithTag(1) as! UIImageView
+            imageView2.af_setImage(withURL: URL(string: userName2.photoUrl)!,placeholderImage: UIImage(named: "Placeholder")!,imageTransition: .curlUp(0.2)
             )
-            let label = cell2.viewWithTag(2) as! UILabel
-            label.text = userName.name
+            let label2 = cell2.viewWithTag(2) as! UILabel
+            label2.text = userName2.name
             return cell2
-        }else if collectionView == self.choosenUser {
-            
+        }
+        
+        //セルがクリックされたら
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            if collectionView == self.resultCollection{
+                let user = Auth.auth().currentUser
+                let uid = user?.uid
+                let db = Firestore.firestore()
+                db.collection("groups").document(documentId).collection("users").addDocument(data: ["uid" :uid as Any])
+                selectedUsers.append(users[indexPath.row])
+            }
+            print(selectedUsers)
+        }
+        
+        //選択されたユーザーコレクション
+        if collectionView == self.choosenUser {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
             let userName = selectedUsers[indexPath.row]
             let imageView = cell.viewWithTag(1) as! UIImageView
@@ -175,22 +200,11 @@ extension ChooseMemberViewController: UICollectionViewDelegate,UICollectionViewD
             let label = cell.viewWithTag(2) as! UILabel
             label.text = userName.name
             return cell
-            
+        }else{
+            return UICollectionViewCell()
         }
-        return UICollectionViewCell()
-    }
-    
-    //セルがクリックされたら
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if collectionView == self.resultCollection {
-            let user = Auth.auth().currentUser
-            let uid = user?.uid
-            let db = Firestore.firestore()
-            db.collection("groups").document(documentId).collection("users").addDocument(data: ["uid" :uid as Any])
-            selectedUsers.append(users[indexPath.row])
-        }
-    }
     
-}
+    }
 
+}
