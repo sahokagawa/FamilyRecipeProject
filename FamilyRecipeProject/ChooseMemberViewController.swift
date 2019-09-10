@@ -176,18 +176,6 @@ extension ChooseMemberViewController: UICollectionViewDelegate,UICollectionViewD
             return cell2
         }
         
-        //セルがクリックされたら
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            if collectionView == self.resultCollection{
-                let user = Auth.auth().currentUser
-                let uid = user?.uid
-                let db = Firestore.firestore()
-                db.collection("groups").document(documentId).collection("users").addDocument(data: ["uid" :uid as Any])
-                selectedUsers.append(users[indexPath.row])
-            }
-            print(selectedUsers)
-        }
-        
         //選択されたユーザーコレクション
         if collectionView == self.choosenUser {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
@@ -207,4 +195,11 @@ extension ChooseMemberViewController: UICollectionViewDelegate,UICollectionViewD
     
     }
 
+    //セルがクリックされたら
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.resultCollection{
+            selectedUsers.append(users[indexPath.row])
+        }
+        print(selectedUsers)
+    }
 }
