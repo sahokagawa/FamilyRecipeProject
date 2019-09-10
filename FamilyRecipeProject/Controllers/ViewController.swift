@@ -92,18 +92,7 @@ class ViewController: UIViewController {
     }
     
     
-    //ログアウトボタンが押されたら
-    @IBAction func logoutButton(_ sender: UIButton) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            performSegue(withIdentifier: "toBackSignIn", sender: nil)
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-
-    }
+  
     
     //アカウント削除ボタン
 //    @IBAction func deleteUserButton(_ sender: UIButton) {
