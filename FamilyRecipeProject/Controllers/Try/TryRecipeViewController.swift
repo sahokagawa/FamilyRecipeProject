@@ -24,6 +24,8 @@ class TryRecipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "グループの名前"
+        
         tryRecipeCollection.delegate = self
         tryRecipeCollection.dataSource = self
         
@@ -72,7 +74,7 @@ extension TryRecipeViewController: UICollectionViewDataSource,UICollectionViewDe
         cell.layer.borderWidth = 0.5
         let imageView = cell.viewWithTag(1) as! UIImageView
         if indexPath.row == 0 {
-            imageView.image = UIImage(named: "4")
+            imageView.image = UIImage(named: "plus")
         }else{
             let tryRecipe = tryRecipes[indexPath.row - 1]
             imageView.image = UIImage(data: tryRecipe.photoData)

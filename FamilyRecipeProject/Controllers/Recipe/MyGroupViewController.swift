@@ -93,7 +93,7 @@ extension MyGroupViewController: UICollectionViewDelegate,UICollectionViewDataSo
         
        let imageView = cell.viewWithTag(1) as! UIImageView
         if indexPath.row == 0 {
-           imageView.image = UIImage(named: "4")
+           imageView.image = UIImage(named: "plus")
         }else{
             let recipe  = recipes[indexPath.row - 1]
             imageView.image = UIImage(data: recipe.photoData)
