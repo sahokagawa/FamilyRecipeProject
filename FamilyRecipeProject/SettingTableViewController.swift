@@ -20,6 +20,8 @@ class SettingTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = "設定・その他"
 
     }
 

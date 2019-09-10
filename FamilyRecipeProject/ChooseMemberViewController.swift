@@ -114,38 +114,6 @@ class ChooseMemberViewController: UIViewController {
 
 
 
-//extension ChooseMemberViewController : UITableViewDelegate,UITableViewDataSource{
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return users.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//        let userName = users[indexPath.row]
-//
-//        let imageView = cell.viewWithTag(1) as! UIImageView
-//        imageView.af_setImage(
-//            withURL: URL(string: userName.photoUrl)!,
-//            placeholderImage: UIImage(named: "Placeholder")!,
-//            imageTransition: .curlUp(0.2)
-//        )
-//
-//        let label = cell.viewWithTag(2) as! UILabel
-//        label.text = userName.name
-//        return cell
-//    }
-
-    //セルがクリックされたら
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let user = Auth.auth().currentUser
-//        let uid = user?.uid
-//        let db = Firestore.firestore()
-//        db.collection("groups").document(documentId).collection("users").addDocument(data: ["uid" :uid as Any])
-
-//        selectedUsers.append(users[indexPath.row])
-//    }
-//
-//}
 
 extension ChooseMemberViewController: UICollectionViewDelegate,UICollectionViewDataSource {
     
