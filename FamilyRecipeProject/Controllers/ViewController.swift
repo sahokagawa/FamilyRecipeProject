@@ -44,6 +44,9 @@ class ViewController: UIViewController {
         
 //        loginUserLabel.text = user.displayName! + "のマイページ"
         self.navigationItem.title = user.displayName! + "のマイページ"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.settingButton))
+        
+        
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 1.000, green: 0.957, blue: 0.747, alpha: 1)
 //        let settingImage = UIBarButtonItem(image: UIImage(named: "setting"), style: .plain, target: self, action: nil)
 //        self.navigationItem.rightBarButtonItem = settingImage

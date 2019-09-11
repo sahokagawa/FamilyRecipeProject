@@ -180,7 +180,6 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FamilyRecipeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -228,14 +227,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUY-GC-pAH">
-                                <rect key="frame" x="346" y="119" width="48" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="setting"/>
-                                <connections>
-                                    <action selector="settingButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qe4-HW-ozt"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -249,6 +240,7 @@
                         <segue destination="aAp-t9-EgT" kind="show" identifier="toSetting" id="n3K-CS-4A9"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2259.4202898550725" y="158.03571428571428"/>
         </scene>
@@ -476,7 +468,6 @@
         <!--Setting Group View Controller-->
         <scene sceneID="EpV-yH-ncF">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iOn-A9-6yi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="OZR-4h-xSm" customClass="SettingGroupViewController" customModule="FamilyRecipeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GNI-q5-t1B">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -522,6 +513,7 @@
                         <outlet property="groupName" destination="Vsi-qj-1Sp" id="QTE-rc-LNc"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iOn-A9-6yi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4426.0869565217399" y="468.75"/>
         </scene>
@@ -533,14 +525,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBE-uN-yjG">
-                                <rect key="frame" x="283" y="120" width="108" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="グループの設定"/>
-                                <connections>
-                                    <action selector="didClickReSettingButton:" destination="uh9-by-4rb" eventType="touchUpInside" id="W5k-OH-7va"/>
-                                </connections>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gl6-bD-GDA">
                                 <rect key="frame" x="0.0" y="180" width="414" height="602"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -972,7 +956,6 @@
         <image name="home" width="28" height="28"/>
         <image name="plus" width="376" height="338"/>
         <image name="recipe" width="28" height="28"/>
-        <image name="setting" width="274" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lI2-2x-0Re"/>

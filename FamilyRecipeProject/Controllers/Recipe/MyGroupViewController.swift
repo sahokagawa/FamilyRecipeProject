@@ -36,6 +36,7 @@ class MyGroupViewController: UIViewController {
         
         //ナビゲーション
         self.parent!.navigationItem.title = "グループの名前"
+        self.parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.didClickReSettingButton))
         
         recipeCollection.delegate = self
         recipeCollection.dataSource = self
@@ -73,7 +74,7 @@ class MyGroupViewController: UIViewController {
     
     }
     //グループ設定ボタンが押されたら
-    @IBAction func didClickReSettingButton(_ sender: UIButton) {
+    @objc func didClickReSettingButton(_ sender: UIButton) {
         performSegue(withIdentifier: "toReSettingGroup", sender: nil)
         
     }
