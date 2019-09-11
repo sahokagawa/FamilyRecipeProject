@@ -155,6 +155,12 @@ extension ChooseMemberViewController: UICollectionViewDelegate,UICollectionViewD
                 imageTransition: .curlUp(0.2))
             let label = cell.viewWithTag(2) as! UILabel
             label.text = userName.name
+            
+            //メンバーを削除したい
+            let deleteButton = cell.viewWithTag(3) as! UIButton
+            deleteButton.layer.setValue(indexPath.row, forKey: "index")
+            deleteButton.addTarget(self, action: #selector(deleteUser(_:)), for: UIControl.Event.touchUpInside)
+
             return cell
         }else{
             return UICollectionViewCell()
@@ -169,5 +175,12 @@ extension ChooseMemberViewController: UICollectionViewDelegate,UICollectionViewD
             selectedUsers.append(users[indexPath.row])
         }
         print(selectedUsers)
+    }
+    
+    //セル削除したい
+    @objc func deleteUser(_ sender: UIButton) {
+        let i : Int = (sender.layer.value(forKey: "index")) as! Int
+        selectedUsers.remove(at: i)
+        choosenUser.reloadData()
     }
 }
