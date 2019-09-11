@@ -73,6 +73,8 @@ class MyGroupViewController: UIViewController {
         }
     
     }
+    
+    
     //グループ設定ボタンが押されたら
     @objc func didClickReSettingButton(_ sender: UIButton) {
         performSegue(withIdentifier: "toReSettingGroup", sender: nil)

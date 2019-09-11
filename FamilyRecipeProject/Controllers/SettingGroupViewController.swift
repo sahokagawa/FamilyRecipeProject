@@ -18,6 +18,9 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
     @IBOutlet weak var buttonImage: UIButton!
     @IBOutlet weak var groupName: UITextField!
     @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    
     
     
     override func viewDidLoad() {
@@ -26,6 +29,10 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
         self.navigationItem.title = "グループの設定"
         createButton.layer.borderWidth = 1
         createButton.layer.cornerRadius = 10
+        
+        //前のページから渡ってきた、メンバーを表示したい
+        collectionView.delegate = self
+        collectionView.dataSource = self
 
         
     }
@@ -82,10 +89,6 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
                 self.present(alert, animated:true , completion: nil)
                 
                 
-                
-                
-                
-                
                 // 選択された人グループに自分を追加
                 let me :User = User(uid: user!.uid, name: (user?.displayName)!, photoUrl: (user?.photoURL!.absoluteString)!, groups: [""])
                 self.selectedMember.append(me)
@@ -120,3 +123,25 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
 }
     
 
+extension SettingGroupViewController: UICollectionViewDelegate,UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return selectedMember.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+
+        let imageView = cell.viewWithTag(1) as! UIImageView
+        let label = cell.viewWithTag(2) as! UILabel
+        let userName = selectedMember[indexPath.row]
+
+        imageView.af_setImage(
+            withURL: URL(string: userName.photoUrl)!,
+            placeholderImage: UIImage(named: "Placeholder")!,
+            imageTransition: .curlUp(0.2))
+        label.text = userName.name
+        return cell
+    }
+
+    
+}
