@@ -70,6 +70,21 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
                 print("エラーです")
             }else{
                 print("成功です")
+                //グループ作成成功アラート
+                let alert: UIAlertController = UIAlertController(title:"グループを作成しました" , message: "マイページに戻る", preferredStyle: .alert)
+                let yesAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+                    //マイページに戻りたい
+                    let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "myPage") as! UINavigationController
+                    
+                    self.present(secondViewController, animated: true, completion: nil)
+                }
+                alert.addAction(yesAction)
+                self.present(alert, animated:true , completion: nil)
+                
+                
+                
+                
+                
                 
                 // 選択された人グループに自分を追加
                 let me :User = User(uid: user!.uid, name: (user?.displayName)!, photoUrl: (user?.photoURL!.absoluteString)!, groups: [""])
