@@ -26,6 +26,11 @@ class ShowRecipeViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = "レシピ"
+        
+//        let scrollView = UIScrollView()
+//        scrollView.frame = howTo.frame
+//        scrollView.contentSize = CGSize(width:howTo.frame.width, height:1000)
+//        self.view.addSubview(scrollView)
     
         recipeImage.image = UIImage(data: recipe!.photoData)
         name.text = recipe?.name
