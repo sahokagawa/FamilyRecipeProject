@@ -39,6 +39,10 @@ class ChooseMemberViewController: UIViewController {
     }
     
     
+    //設定でグループのメンバー選ぶときにい今現在のメンバーを表示したい
+    var group: Group? = nil
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +67,15 @@ class ChooseMemberViewController: UIViewController {
         
         //ナビゲーション
         self.navigationItem.title = "メンバーを選択"
+        
+        //設定でグループのメンバー選ぶときにい今現在のメンバーを表示したい
+        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
+        group = appDelegate.group
+        
+        if group != nil {
+            searchMemberByGroupId(groupId: group!.uid)
+        }
+        
     }
     
     
@@ -182,5 +195,40 @@ extension ChooseMemberViewController: UICollectionViewDelegate,UICollectionViewD
         let i : Int = (sender.layer.value(forKey: "index")) as! Int
         selectedUsers.remove(at: i)
         choosenUser.reloadData()
+    }
+    
+    
+    func searchMemberByGroupId(groupId:String){
+        
+        let db = Firestore.firestore()
+        
+        db.collection("groups").document(groupId).collection("users").getDocuments { (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                return
+            }
+            
+            var groupId :[String] = []
+            for document in documents {
+                let uid = document.get("uid") as! String
+                groupId.append(uid)
+            }
+            
+            self.selectedUsers = []
+            for id in groupId {
+                db.collection("users").document(id).getDocument(completion: { (documentSnapshot, error) in
+                    let userName = documentSnapshot?.get("name") as! String
+                    let groupImage = documentSnapshot?.get("photo") as! String
+                    let groups = [""]
+                    
+                    let user = User(uid: id, name: userName, photoUrl: groupImage, groups: groups)
+                    self.selectedUsers.append(user)
+                })
+
+            }
+            
+            
+        }
+        
+        
     }
 }

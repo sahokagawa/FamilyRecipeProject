@@ -602,9 +602,9 @@
                     <navigationItem key="navigationItem" id="Ifo-gn-hh0"/>
                     <connections>
                         <outlet property="recipeCollection" destination="gl6-bD-GDA" id="7OP-ev-LN0"/>
-                        <segue destination="ekU-VJ-OMu" kind="show" identifier="toReSettingGroup" id="Uv4-G9-yCw"/>
                         <segue destination="4bS-zZ-hfQ" kind="show" identifier="toWriteRecipe" id="CJH-iY-EPL"/>
                         <segue destination="MKK-Qr-Bma" kind="show" identifier="toShowRecipe" id="hbO-78-Q11"/>
+                        <segue destination="ekU-VJ-OMu" kind="show" identifier="toReSettingGroup" id="U6T-39-2oK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A68-4A-E3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -993,7 +993,7 @@
         <image name="recipe" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Uv4-G9-yCw"/>
+        <segue reference="lI2-2x-0Re"/>
         <segue reference="Fqd-Lp-MmG"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -13,6 +13,9 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
     
     //前の画面から選ばれたユーザーを受け取るための変数
     var selectedMember :[User] = []
+    
+    //前の画面から選択されたグループの情報を受け取るための箱
+    var group: Group? = nil
   
     
     @IBOutlet weak var buttonImage: UIButton!
@@ -34,7 +37,20 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
         collectionView.delegate = self
         collectionView.dataSource = self
 
+         let user = Auth.auth().currentUser
         
+        
+        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
+        group = appDelegate.group
+        
+        if group == nil {
+            // 選択された人グループに自分を追加
+            let me :User = User(uid: user!.uid, name: (user?.displayName)!, photoUrl: (user?.photoURL!.absoluteString)!, groups: [""])
+            self.selectedMember.append(me)
+        } else{
+            buttonImage.setImage(UIImage(data: group!.photoData), for: .normal)
+            groupName.text = group?.name
+        }
     }
     
 
@@ -88,10 +104,6 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
                 alert.addAction(yesAction)
                 self.present(alert, animated:true , completion: nil)
                 
-                
-                // 選択された人グループに自分を追加
-                let me :User = User(uid: user!.uid, name: (user?.displayName)!, photoUrl: (user?.photoURL!.absoluteString)!, groups: [""])
-                self.selectedMember.append(me)
                 
                 //選択された人をグループに登録
                 for user in self.selectedMember {

@@ -77,7 +77,22 @@ class MyGroupViewController: UIViewController {
     
     //グループ設定ボタンが押されたら
     @objc func didClickReSettingButton(_ sender: UIButton) {
-        performSegue(withIdentifier: "toReSettingGroup", sender: nil)
+        let alert = UIAlertController(title: "グループの設定", message: "選択してください", preferredStyle: .actionSheet)
+        let editorAction = UIAlertAction(title: "編集", style: .default) { (UIAlertAction) in
+            self.performSegue(withIdentifier: "toReSettingGroup", sender: self.group)
+        }
+        let  deleteAction = UIAlertAction(title: "グループを退会する", style: .default) { (UIAlertAction) in
+            print("削除")
+        }
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
+            (action: UIAlertAction!) -> Void in
+        })
+        
+        alert.addAction(editorAction)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        present(alert, animated:true , completion: nil)
+        
         
     }
 
