@@ -12,7 +12,8 @@ class ShowTryRecipeViewController: UIViewController {
     
     @IBOutlet weak var tryRecipeImage: UIImageView!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var message: UILabel!
+    @IBOutlet weak var message: UITextView!
+    
     
     
     var tryRecipe: TryRecipe? = nil
@@ -26,6 +27,7 @@ class ShowTryRecipeViewController: UIViewController {
        tryRecipeImage.image = UIImage(data: tryRecipe!.photoData)
         name.text = tryRecipe?.name
         message.text = tryRecipe?.message
+        message.isEditable = false
 
     }
     
