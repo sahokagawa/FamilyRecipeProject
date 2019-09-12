@@ -67,7 +67,7 @@ class ViewController: UIViewController {
                     self.groups = groups
                 }
             }
-            
+
             for document in documents {
                 let groupId = document.get("groupId") as! String
                 db.collection("groups").document(groupId).getDocument(completion: { (documentSnapshot, error) in

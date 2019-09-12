@@ -79,10 +79,14 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
     
     //グループ作成ボタンが押されたら
     @IBAction func createGroup(_ sender: UIButton) {
+        
         let user = Auth.auth().currentUser
         let uid = user?.uid
         let data = buttonImage.imageView?.image?.jpegData(compressionQuality: 0.1)
         let db = Firestore.firestore()
+        
+        if group == nil {
+        
         var ref: DocumentReference? = nil
         ref = db.collection("groups").addDocument(data: [
             "groupName": groupName.text as Any,
@@ -120,17 +124,91 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
                         for document in documents {
                             db.collection("users").document(document.documentID).collection("groups").addDocument(data: [
                                 "groupId": ref!.documentID
-                            ])
+                                ])
+                            }
+                        
+                        })
+                    }
+                
+                
+                }
+            
+            }
+            
+        }else{
+            db.collection("groups").document(group!.uid).setData([
+                "groupName": groupName.text as Any,
+                "photoData": data as Any,
+            ])
+            
+            db.collection("groups").document(group!.uid).collection("users").getDocuments { (querySnapshot, error) in
+                guard let documents = querySnapshot?.documents else {
+                    return
+                }
+                
+                for document in documents {
+                    db.collection("groups").document(self.group!.uid).collection("users").document(document.documentID).delete()
+                }
+                
+                
+                //選択された人をグループに登録
+                for user in self.selectedMember {
+                    db.collection("groups").document(self.group!.uid).collection("users").addDocument(data: [
+                        "uid": user.uid
+                        ])
+                    
+                    
+                    db.collection("users").whereField("uid", isEqualTo: user.uid).getDocuments(completion: { (querySnapshot, error) in
+                        
+                        guard let documents = querySnapshot?.documents else {
+                            return
                         }
+                        
+                        for document in documents {
+                        
+                            db.collection("users").document(document.documentID).collection("groups").whereField("groupdId", isEqualTo: self.group?.uid).getDocuments(completion: { (querySnapshot, error) in
+                                
+                                guard let documents = querySnapshot?.documents else {
+                                    return
+                                }
+                                
+                                if documents.count  == 0 {
+                                    db.collection("users").document(document.documentID).collection("groups").addDocument(data: [
+                                        "groupId": self.group!.uid
+                                        ])
+                                }
+                                
+                            })
+                            
+                            
+                        }
+                        
+                        
+                        
+                        let alert: UIAlertController = UIAlertController(title:"グループを作成しました" , message: "マイページに戻る", preferredStyle: .alert)
+                        let yesAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+                            //マイページに戻りたい
+                            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "myPage") as! UINavigationController
+                            
+                            self.present(secondViewController, animated: true, completion: nil)
+                        }
+                        alert.addAction(yesAction)
+                        self.present(alert, animated:true , completion: nil)
+                        
                         
                     })
                 }
                 
-                
             }
             
+            
         }
+            
+            
+//            db.collection("groups").document(group!.uid).collection("users").setD
+    
     }
+    
     
 }
     
