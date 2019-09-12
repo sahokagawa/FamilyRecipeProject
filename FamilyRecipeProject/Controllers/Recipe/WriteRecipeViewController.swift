@@ -90,7 +90,32 @@ class WriteRecipeViewController: UIViewController,UIImagePickerControllerDelegat
             "photoData": data as Any,
             "ingredients" :point1 as Any,
             "howTo":point2 as Any
-            ])
+        ]) { err in
+            
+            if let err = err {
+                print("エラーです")
+            }else{
+                print("成功です")
+                //グループ作成成功アラート
+                let alert: UIAlertController = UIAlertController(title:"レシピを作成しました" , message: "グループに戻る", preferredStyle: .alert)
+                let yesAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+                    //マイページに戻りたい
+                    //グループページに戻りたい
+                    
+//                    if let tabvc = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController  {
+//
+//                        DispatchQueue.main.async {
+//                            tabvc.selectedIndex = 0
+//                        }
+//                    }
+                let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "groupPage") as! UITabBarController
+                    self.present(secondViewController, animated: true, completion: nil)
+                }
+                alert.addAction(yesAction)
+                self.present(alert, animated:true , completion: nil)
+            }
+        }
+                
     }
     
     
