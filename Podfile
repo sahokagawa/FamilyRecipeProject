@@ -13,4 +13,6 @@ target 'FamilyRecipeProject' do
   pod 'AlamofireImage'
   pod 'RevealingSplashView'
   pod 'IQKeyboardManagerSwift'
+  pod 'ReadMoreTextView'
+  pod 'ExpandableLabel'
 end

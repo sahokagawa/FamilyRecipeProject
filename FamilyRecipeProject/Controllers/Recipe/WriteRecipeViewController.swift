@@ -40,15 +40,15 @@ class WriteRecipeViewController: UIViewController,UIImagePickerControllerDelegat
         createButton.layer.cornerRadius = 10
         createButton.layer.borderWidth = 1
         
-        ingredients.layer.borderWidth = 5
+        ingredients.layer.borderWidth = 1
         ingredients.layer.borderColor = UIColor.lightGray.cgColor
         ingredients.layer.cornerRadius = 10
         
-        howTo.layer.borderWidth = 5
+        howTo.layer.borderWidth = 1
         howTo.layer.borderColor = UIColor.lightGray.cgColor
         howTo.layer.cornerRadius = 10
         
-        message.layer.borderWidth = 5
+        message.layer.borderWidth = 1
         message.layer.borderColor = UIColor.lightGray.cgColor
         message.layer.cornerRadius = 10
         

@@ -120,7 +120,7 @@ extension MyGroupViewController: UICollectionViewDelegate,UICollectionViewDataSo
         let label = cell.viewWithTag(2) as! UILabel
         
         if indexPath.row == 0 {
-            label.text = "追加"
+            label.text = "レシピを書く"
         }else{
             let recipe  = recipes[indexPath.row - 1]
             label.text = recipe.name
