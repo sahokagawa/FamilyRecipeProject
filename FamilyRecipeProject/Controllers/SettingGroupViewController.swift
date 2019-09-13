@@ -122,10 +122,19 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
                         }
                         
                         for document in documents {
-                            db.collection("users").document(document.documentID).collection("groups").addDocument(data: [
+                            
+                            let groupRef = db.collection("users").document(document.documentID).collection("groups").document(ref!.documentID).setData([
                                 "groupId": ref!.documentID
-                                ])
-                            }
+                            ])
+                            
+//                            groupRef.getDocument(completion: { (document, error) in
+//                                if let document = document, !document.exists {
+//                                    groupRef.setData([
+//                                        "groupId": ref!.documentID
+//                                    ])
+//                                }
+//                            })
+                        }
                         
                         })
                     }
@@ -166,20 +175,9 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
                         
                         for document in documents {
                         
-                            db.collection("users").document(document.documentID).collection("groups").whereField("groupdId", isEqualTo: self.group?.uid).getDocuments(completion: { (querySnapshot, error) in
-                                
-                                guard let documents = querySnapshot?.documents else {
-                                    return
-                                }
-                                
-                                if documents.count  == 0 {
-                                    db.collection("users").document(document.documentID).collection("groups").addDocument(data: [
-                                        "groupId": self.group!.uid
-                                        ])
-                                }
-                                
-                            })
-                            
+                            let groupRef = db.collection("users").document(document.documentID).collection("groups").document(self.group!.uid).setData([
+                                "groupId": self.group!.uid
+                            ])
                             
                         }
                         
