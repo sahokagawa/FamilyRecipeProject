@@ -108,8 +108,9 @@ class WriteRecipeViewController: UIViewController,UIImagePickerControllerDelegat
 //                            tabvc.selectedIndex = 0
 //                        }
 //                    }
-                let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "groupPage") as! UITabBarController
-                    self.present(secondViewController, animated: true, completion: nil)
+//                let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "groupPage") as! UITabBarController
+//                    self.present(secondViewController, animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
                 }
                 alert.addAction(yesAction)
                 self.present(alert, animated:true , completion: nil)

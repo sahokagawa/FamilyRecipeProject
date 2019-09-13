@@ -22,6 +22,7 @@ class UserSettingViewController: UIViewController,UITextFieldDelegate,UIImagePic
         
         self.navigationItem.title = "プロフィールの変更"
         nameText.delegate = self
+        
         let user = Auth.auth().currentUser!
         let db = Firestore.firestore()
         
@@ -91,26 +92,40 @@ class UserSettingViewController: UIViewController,UITextFieldDelegate,UIImagePic
             let imageUrl = self.imageViewButton.imageView?.image!.jpegData(compressionQuality: 0.1)! as! Data
             
             
-           let storage = Storage.storage()
+            let storage = Storage.storage()
             let storageRef = storage.reference()
-            let forestRef = storageRef.child("profiles/\(user.uid).jpg")
-            // Create file metadata to update
-            let newMetadata = StorageMetadata()
-//            newMetadata.cacheControl = "public,max-age=300";
-//            newMetadata.contentType = "image/jpeg";
-            
-            // Update metadata properties
-            forestRef.updateMetadata(newMetadata) { metadata, error in
-                if let error = error {
+            let riversRef = storageRef.child("profiles/\(user.uid).jpg")
+            let uploadTask = riversRef.putData(imageUrl, metadata: nil) { (metadata, error) in
+                guard let metadata = metadata else {
                     // Uh-oh, an error occurred!
-                    print(error.localizedDescription)
-                } else {
-                    // Updated metadata for 'images/forest.jpg' is returned
+                    return
                 }
+                let size = metadata.size
+                // You can also access to download URL after upload.
+                riversRef.downloadURL { (url, error) in
+                    guard let downloadURL = url else {
+                        // Uh-oh, an error occurred!
+                        return
+                    }
+                    
+                    let changeRequest2 = user.createProfileChangeRequest()
+                    changeRequest2.photoURL = downloadURL
+                    changeRequest2.commitChanges(completion: { (error)in
+                        
+                    })
+                    
+                    db.collection("users").document(user.uid).updateData(["photo":downloadURL.absoluteString]){ err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        } else {
+                            print("Document successfully updated")
+                        }
+                    }
+                }
+            
             }
             
+            uploadTask.resume()
         }
     }
-    
-    
 }
