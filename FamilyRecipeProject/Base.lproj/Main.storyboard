@@ -738,21 +738,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oqt-RX-e35" customClass="ReadMoreTextView" customModule="ReadMoreTextView">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oqt-RX-e35">
                                 <rect key="frame" x="45" y="373" width="285" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZE0-tC-sLh" customClass="ReadMoreTextView" customModule="ReadMoreTextView">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZE0-tC-sLh">
                                 <rect key="frame" x="45" y="480" width="285" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yI7-ew-eDe" customClass="ReadMoreTextView" customModule="ReadMoreTextView">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yI7-ew-eDe">
                                 <rect key="frame" x="45" y="572" width="285" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -764,9 +764,9 @@
                         <viewLayoutGuide key="safeArea" id="pJh-PW-4i9"/>
                     </view>
                     <connections>
-                        <outlet property="howTo" destination="ZE0-tC-sLh" id="wAx-dj-diq"/>
-                        <outlet property="ingredient" destination="oqt-RX-e35" id="Mcd-Xi-Wk2"/>
-                        <outlet property="message" destination="yI7-ew-eDe" id="9pu-Jm-8ze"/>
+                        <outlet property="howTo" destination="ZE0-tC-sLh" id="dw2-Iq-51d"/>
+                        <outlet property="ingredient" destination="oqt-RX-e35" id="eZR-pg-UVc"/>
+                        <outlet property="message" destination="yI7-ew-eDe" id="lIU-DU-mx9"/>
                         <outlet property="name" destination="fWB-8u-rn7" id="49w-sr-1f6"/>
                         <outlet property="recipeImage" destination="AT7-I9-nt1" id="qIk-rC-zWd"/>
                     </connections>

@@ -8,12 +8,12 @@
 
 import UIKit
 import Firebase
-import ReadMoreTextView
+//import ReadMoreTextView
 //import ExpandableLabel
 
 class ShowRecipeViewController: UIViewController {
     
-    let scrollView = UIScrollView()
+//    let scrollView = UIScrollView()
     
 
     
@@ -21,16 +21,22 @@ class ShowRecipeViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
 //    @IBOutlet weak var message: UILabel!
 //    @IBOutlet weak var ingredients: ExpandableLabel!
-    @IBOutlet weak var ingredient: ReadMoreTextView!
-    
+   
 //    @IBOutlet weak var ingredients: NSLayoutConstraint!
 //    var isLabelAtMaxHeight = false
 //    @IBOutlet weak var btn: UIButton!
     
-    @IBOutlet weak var howTo: ReadMoreTextView!
-    @IBOutlet weak var message: ReadMoreTextView!
+//     @IBOutlet weak var ingredient: ReadMoreTextView!
+//    @IBOutlet weak var howTo: ReadMoreTextView!
+//    @IBOutlet weak var message: ReadMoreTextView!
     
-  
+    
+    @IBOutlet weak var ingredient: UITextView!
+    @IBOutlet weak var howTo: UITextView!
+    @IBOutlet weak var message: UITextView!
+    
+    
+    
     
     
     var recipe: Recipe? = nil
@@ -40,12 +46,13 @@ class ShowRecipeViewController: UIViewController {
         
         self.navigationItem.title = "レシピ"
         
-        ingredient.isEditable = false
         ingredient.text = recipe?.ingredients
-        ingredient.shouldTrim = true
-        ingredient.maximumNumberOfLines = 2
-        ingredient.attributedReadMoreText = NSAttributedString(string: "...続きを読む")
-        ingredient.attributedReadLessText = NSAttributedString(string: "...閉じる")
+        ingredient.isEditable = false
+        
+//        ingredient.shouldTrim = true
+//        ingredient.maximumNumberOfLines = 2
+//        ingredient.attributedReadMoreText = NSAttributedString(string: "...続きを読む")
+//        ingredient.attributedReadLessText = NSAttributedString(string: "...閉じる")
         
         
 //        ingredients.text = recipe?.ingredients
@@ -58,17 +65,17 @@ class ShowRecipeViewController: UIViewController {
         
         howTo.isEditable = false
         howTo.text = recipe?.howTo
-        howTo.shouldTrim = true
-        howTo.maximumNumberOfLines = 2
-        howTo.attributedReadMoreText = NSAttributedString(string: "...続きを読む")
-        ingredient.attributedReadLessText = NSAttributedString(string: "...閉じる")
+//        howTo.shouldTrim = true
+//        howTo.maximumNumberOfLines = 2
+//        howTo.attributedReadMoreText = NSAttributedString(string: "...続きを読む")
+//        ingredient.attributedReadLessText = NSAttributedString(string: "...閉じる")
         
         message.isEditable = false
         message.text = recipe?.message
-        message.shouldTrim = true
-        message.maximumNumberOfLines = 2
-        message.attributedReadMoreText = NSAttributedString(string: "...続きを読む")
-        message.attributedReadLessText = NSAttributedString(string: "...閉じる")
+//        message.shouldTrim = true
+//        message.maximumNumberOfLines = 2
+//        message.attributedReadMoreText = NSAttributedString(string: "...続きを読む")
+//        message.attributedReadLessText = NSAttributedString(string: "...閉じる")
 
         
         
