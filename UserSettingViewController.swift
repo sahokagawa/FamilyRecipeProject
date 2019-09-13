@@ -67,6 +67,47 @@ class UserSettingViewController: UIViewController,UITextFieldDelegate,UIImagePic
     //変更ボタンが押されたら
     @IBAction func changeButton(_ sender: UIButton) {
         if nameText.text != "" {
+            let user = Auth.auth().currentUser!
+            
+            let userName = nameText.text
+            
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.displayName = userName
+            changeRequest?.commitChanges { (error) in
+                // ...
+            }
+            
+            let db = Firestore.firestore()
+            db.collection("users").document(user.uid).updateData(["name": userName as Any]){ err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+            
+            
+            
+            let imageUrl = self.imageViewButton.imageView?.image!.jpegData(compressionQuality: 0.1)! as! Data
+            
+            
+           let storage = Storage.storage()
+            let storageRef = storage.reference()
+            let forestRef = storageRef.child("profiles/\(user.uid).jpg")
+            // Create file metadata to update
+            let newMetadata = StorageMetadata()
+//            newMetadata.cacheControl = "public,max-age=300";
+//            newMetadata.contentType = "image/jpeg";
+            
+            // Update metadata properties
+            forestRef.updateMetadata(newMetadata) { metadata, error in
+                if let error = error {
+                    // Uh-oh, an error occurred!
+                    print(error.localizedDescription)
+                } else {
+                    // Updated metadata for 'images/forest.jpg' is returned
+                }
+            }
             
         }
     }
