@@ -27,10 +27,10 @@ class ViewController: UIViewController {
 //        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "gohan.png")!)
         
         //コレクションのレイアウト 余白
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
-        layout.itemSize = CGSize(width:180, height:180)
-        collectionView.collectionViewLayout = layout
+//        let layout = UICollectionViewFlowLayout()
+//        layout.sectionInset = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
+//        layout.itemSize = CGSize(width:180, height:180)
+//        collectionView.collectionViewLayout = layout
         
     
         
