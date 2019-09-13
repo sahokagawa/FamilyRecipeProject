@@ -84,6 +84,8 @@ class UserSettingViewController: UIViewController,UITextFieldDelegate,UIImagePic
                     print("Error updating document: \(err)")
                 } else {
                     print("Document successfully updated")
+                    //登録確認アラート
+                    self.alert(title: "確認", message: "変更しました", actiontitle: "OK")
                 }
             }
             
@@ -128,4 +130,13 @@ class UserSettingViewController: UIViewController,UITextFieldDelegate,UIImagePic
             uploadTask.resume()
         }
     }
+    
+    
+    //アラート
+    func alert(title:String,message:String,actiontitle:String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: actiontitle, style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }

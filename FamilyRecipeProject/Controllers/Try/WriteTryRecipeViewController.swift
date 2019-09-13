@@ -78,8 +78,9 @@ class WriteTryRecipeViewController: UIViewController,UIImagePickerControllerDele
                 let alert: UIAlertController = UIAlertController(title:"作ってみたを作成しました" , message: "グループに戻る", preferredStyle: .alert)
                 let yesAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
             
-                    let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "groupPage") as! UITabBarController
-                    self.present(secondViewController, animated: true, completion: nil)
+//                    let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "groupPage") as! UITabBarController
+//                    self.present(secondViewController, animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
                 }
                 alert.addAction(yesAction)
                 self.present(alert, animated:true , completion: nil)
