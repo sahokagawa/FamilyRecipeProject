@@ -13,7 +13,9 @@ class SettingTableViewController: UITableViewController {
     
     @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var changeLabel: UILabel!
-    @IBOutlet weak var deleteLabel: UILabel!
+    @IBOutlet weak var changeUser: UILabel!
+    @IBOutlet weak var delete: UILabel!
+    
     
     
     
@@ -29,16 +31,14 @@ class SettingTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         switch section {
         case 0: // 「設定」のセクション
-            return 3
-        case 1: // 「その他」のセクション
-            return 1
+            return 4
         default: // ここが実行されることはないはず
             return 0
         }
@@ -70,8 +70,19 @@ class SettingTableViewController: UITableViewController {
         }
         
         
+        //登録情報変更
+        if indexPath.row == 1 {
+            performSegue(withIdentifier: "toMailSetting", sender: nil)
+            }
+        
+        if indexPath.row == 2 {
+            performSegue(withIdentifier: "toUserSetting", sender: nil)
+        }
+    
+        
+        
         //アカウント削除ボタン
-        if indexPath.row  == 2 {
+        if indexPath.row  == 3 {
          //アラート
            let alert =  UIAlertController(title: "アカウントを削除しますか", message: "選択してください", preferredStyle:.alert)
             let yesAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
@@ -97,7 +108,12 @@ class SettingTableViewController: UITableViewController {
             
                 }
         
+        
     }
+    
+    
+    
+    
     
 }
 

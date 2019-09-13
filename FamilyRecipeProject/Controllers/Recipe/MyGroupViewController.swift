@@ -81,15 +81,15 @@ class MyGroupViewController: UIViewController {
         let editorAction = UIAlertAction(title: "編集", style: .default) { (UIAlertAction) in
             self.performSegue(withIdentifier: "toReSettingGroup", sender: self.group)
         }
-        let  deleteAction = UIAlertAction(title: "グループを退会する", style: .default) { (UIAlertAction) in
-            print("削除")
-        }
+//        let  deleteAction = UIAlertAction(title: "グループを退会する", style: .default) { (UIAlertAction) in
+//            print("削除")
+//        }
         let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
             (action: UIAlertAction!) -> Void in
         })
         
         alert.addAction(editorAction)
-        alert.addAction(deleteAction)
+//        alert.addAction(deleteAction)
         alert.addAction(cancelAction)
         present(alert, animated:true , completion: nil)
         
