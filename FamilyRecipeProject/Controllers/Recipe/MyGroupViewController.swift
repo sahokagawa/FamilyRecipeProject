@@ -28,6 +28,7 @@ class MyGroupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         //コレクションのレイアウト 余白
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
@@ -35,7 +36,6 @@ class MyGroupViewController: UIViewController {
         recipeCollection.collectionViewLayout = layout
         
         //ナビゲーション
-        self.parent!.navigationItem.title = "グループの名前"
         self.parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.didClickReSettingButton))
         
         recipeCollection.delegate = self
@@ -43,7 +43,9 @@ class MyGroupViewController: UIViewController {
 
         let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
         group = appDelegate.group
-        
+        //ナビゲーション
+        self.parent!.navigationItem.title = group!.name
+        print(group!.name)
         
         //レシピを表示させたい
         let db = Firestore.firestore()

@@ -105,7 +105,7 @@ class SiginUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
                         })
                         
                         //プロフィール画像をfirestoreに保存したい
-                        let profileImage = self.buttonImage.imageView?.image!.jpegData(compressionQuality: 1.0)! as! Data
+                        let profileImage = self.buttonImage.imageView?.image!.jpegData(compressionQuality: 0.1)! as! Data
                         
                         
                         
