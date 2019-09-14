@@ -16,12 +16,19 @@ class UserSettingViewController: UIViewController,UITextFieldDelegate,UIImagePic
     @IBOutlet weak var nameText: UITextField!
     @IBOutlet weak var imageViewButton: UIButton!
     
+    @IBOutlet weak var changeButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = "プロフィールの変更"
         nameText.delegate = self
+        
+        nameText.layer.cornerRadius = 10
+        imageViewButton.layer.cornerRadius = 10
+        changeButton.layer.cornerRadius = 10
+        
         
         let user = Auth.auth().currentUser!
         let db = Firestore.firestore()

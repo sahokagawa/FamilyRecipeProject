@@ -27,12 +27,10 @@ class ViewController: UIViewController {
 //        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "gohan.png")!)
         
         //コレクションのレイアウト 余白
-//        let layout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
-//        layout.itemSize = CGSize(width:180, height:180)
-//        collectionView.collectionViewLayout = layout
-        
-    
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
+        layout.itemSize = CGSize(width:170, height:170)
+        collectionView.collectionViewLayout = layout
         
         //ログインしているユーザーの情報を取得
          let user = Auth.auth().currentUser!
@@ -47,7 +45,7 @@ class ViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.settingButton))
         
         
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 1.000, green: 0.957, blue: 0.747, alpha: 1)
+//        self.navigationController?.navigationBar.barTintColor = UIColor(red: 1.000, green: 0.957, blue: 0.747, alpha: 1)
 //        let settingImage = UIBarButtonItem(image: UIImage(named: "setting"), style: .plain, target: self, action: nil)
 //        self.navigationItem.rightBarButtonItem = settingImage
         
@@ -105,10 +103,11 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         cell.layer.cornerRadius = 10
-        cell.layer.borderWidth = 0.5
+//        cell.layer.borderWidth = 0.5
         
         //collectionViewに表示される画像
         let imageView = cell.viewWithTag(1) as! UIImageView
+        imageView.layer.cornerRadius = 10
         if indexPath.row == 0 {
             imageView.image = UIImage(named: "plus")
         } else {

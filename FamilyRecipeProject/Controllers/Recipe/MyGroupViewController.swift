@@ -30,10 +30,10 @@ class MyGroupViewController: UIViewController {
         
         
         //コレクションのレイアウト 余白
-//        let layout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
-//        layout.itemSize = CGSize(width:180, height:180)
-//        recipeCollection.collectionViewLayout = layout
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
+        layout.itemSize = CGSize(width:170, height:170)
+        recipeCollection.collectionViewLayout = layout
         
         //ナビゲーション
         self.parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.didClickReSettingButton))
@@ -109,9 +109,10 @@ extension MyGroupViewController: UICollectionViewDelegate,UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         cell.layer.cornerRadius = 10
-        cell.layer.borderWidth = 0.5
+//        cell.layer.borderWidth = 0.5
         
        let imageView = cell.viewWithTag(1) as! UIImageView
+        imageView.layer.cornerRadius = 10
         if indexPath.row == 0 {
            imageView.image = UIImage(named: "plus")
         }else{

@@ -30,8 +30,9 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
         super.viewDidLoad()
         
         self.navigationItem.title = "グループの設定"
-        createButton.layer.borderWidth = 1
         createButton.layer.cornerRadius = 10
+        groupName.layer.cornerRadius = 10
+        buttonImage.layer.cornerRadius = 10
         
         //前のページから渡ってきた、メンバーを表示したい
         collectionView.delegate = self

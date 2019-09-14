@@ -26,6 +26,11 @@ class TryRecipeViewController: UIViewController {
         
         self.navigationItem.title = "グループの名前"
         
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
+        layout.itemSize = CGSize(width:170, height:170)
+        tryRecipeCollection.collectionViewLayout = layout
+        
         tryRecipeCollection.delegate = self
         tryRecipeCollection.dataSource = self
         
@@ -71,8 +76,9 @@ extension TryRecipeViewController: UICollectionViewDataSource,UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         cell.layer.cornerRadius = 10
-        cell.layer.borderWidth = 0.5
+//        cell.layer.borderWidth = 0.5
         let imageView = cell.viewWithTag(1) as! UIImageView
+        imageView.layer.cornerRadius = 10
         if indexPath.row == 0 {
             imageView.image = UIImage(named: "plus")
         }else{
@@ -83,7 +89,7 @@ extension TryRecipeViewController: UICollectionViewDataSource,UICollectionViewDe
         let label = cell.viewWithTag(2) as! UILabel
         
         if indexPath.row == 0 {
-            label.text = "追加"
+            label.text = "作ってみたを書く"
         }else{
             let tryRecipe = tryRecipes[indexPath.row - 1]
             label.text = tryRecipe.name

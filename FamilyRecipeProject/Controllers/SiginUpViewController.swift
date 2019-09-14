@@ -50,11 +50,8 @@ class SiginUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
         passForm.delegate = self
         
         //見た目
-        mailForm.layer.borderWidth = 1
         mailForm.layer.cornerRadius = 10
-        passForm.layer.borderWidth = 1
         passForm.layer.cornerRadius = 10
-        nameForm.layer.borderWidth = 1
         nameForm.layer.cornerRadius = 10
         buttonImage.layer.cornerRadius = 10
         siginUpButton.layer.cornerRadius = 10

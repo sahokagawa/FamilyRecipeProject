@@ -14,6 +14,8 @@ class SiginInViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var mailForm: UITextField!
     @IBOutlet weak var passForm: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    
     
     
     override func viewDidLoad() {
@@ -23,10 +25,9 @@ class SiginInViewController: UIViewController, UITextFieldDelegate {
         passForm.delegate = self
         
         //UITextFieldに枠線,角丸を施す
-        mailForm.layer.borderWidth = 1
         mailForm.layer.cornerRadius = 10
-        passForm.layer.borderWidth = 1
         passForm.layer.cornerRadius = 10
+        loginButton.layer.cornerRadius = 10
         
 //        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "gohan.png")!)
         
