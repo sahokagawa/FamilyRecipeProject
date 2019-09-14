@@ -28,6 +28,8 @@ class ShowTryRecipeViewController: UIViewController {
         name.text = tryRecipe?.name
         message.text = tryRecipe?.message
         message.isEditable = false
+        
+        message.layer.cornerRadius = 10
 
     }
     

@@ -17,6 +17,8 @@ class ChooseMemberViewController: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var SettingButton: UIButton!
     @IBOutlet weak var searchUser: UITextField!
+    @IBOutlet weak var resultLabel: UILabel!
+    
     
     //検索結果
     @IBOutlet weak var resultCollection: UICollectionView!
@@ -57,9 +59,7 @@ class ChooseMemberViewController: UIViewController {
 //        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "gohan.png")!)
         
         
-        searchUser.layer.borderWidth = 1
         searchUser.layer.cornerRadius = 10
-        SettingButton.layer.borderWidth = 1
         searchButton.layer.borderWidth = 1
         SettingButton.layer.cornerRadius = 10
         searchButton.layer.cornerRadius = 10
@@ -73,7 +73,11 @@ class ChooseMemberViewController: UIViewController {
         group = appDelegate.group
         
         if group != nil {
+            print("実行されてる")
             searchMemberByGroupId(groupId: group!.uid)
+        }else{
+//            UICollectionViewCell()
+            print("新規されてる")
         }
         
     }
@@ -86,6 +90,8 @@ class ChooseMemberViewController: UIViewController {
         db.collection("users").whereField("name", isEqualTo: searchUser.text).getDocuments { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else{
             //検索結果がないとき
+//                print("該当なし")
+//                self.resultLabel.text = "該当ユーザーがいません"
                 return
             }
             //検索結果あった時
@@ -181,7 +187,6 @@ extension ChooseMemberViewController: UICollectionViewDelegate,UICollectionViewD
         
     
     }
-
     //セルがクリックされたら
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.resultCollection{
@@ -199,7 +204,6 @@ extension ChooseMemberViewController: UICollectionViewDelegate,UICollectionViewD
     
     
     func searchMemberByGroupId(groupId:String){
-        
         let db = Firestore.firestore()
         
         db.collection("groups").document(groupId).collection("users").getDocuments { (querySnapshot, error) in
@@ -222,13 +226,14 @@ extension ChooseMemberViewController: UICollectionViewDelegate,UICollectionViewD
                     
                     let user = User(uid: id, name: userName, photoUrl: groupImage, groups: groups)
                     self.selectedUsers.append(user)
-                })
+                    })
 
+                }
+            
+            
             }
-            
-            
-        }
         
-        
+       
     }
+   
 }

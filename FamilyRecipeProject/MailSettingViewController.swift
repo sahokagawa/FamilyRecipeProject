@@ -12,6 +12,8 @@ import Firebase
 class MailSettingViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var mailText: UITextField!
+    @IBOutlet weak var sendButton: UIButton!
+    
     
 
     override func viewDidLoad() {
@@ -19,6 +21,11 @@ class MailSettingViewController: UIViewController,UITextFieldDelegate {
 
        self.navigationItem.title = "メールアドレスの変更"
         mailText.delegate = self
+        
+        mailText.layer.cornerRadius = 10
+        sendButton.layer.cornerRadius = 10
+        
+        
     }
     
     

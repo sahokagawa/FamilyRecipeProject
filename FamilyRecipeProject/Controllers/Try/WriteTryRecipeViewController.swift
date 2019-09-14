@@ -28,11 +28,10 @@ class WriteTryRecipeViewController: UIViewController,UIImagePickerControllerDele
         super.viewDidLoad()
         
         self.navigationItem.title = "作ってみたを書く"
-        tryRecipeMessage.layer.borderWidth = 5
-        tryRecipeMessage.layer.borderColor = UIColor.lightGray.cgColor
         tryRecipeMessage.layer.cornerRadius = 10
-        clickButton.layer.borderWidth = 1
         clickButton.layer.cornerRadius = 10
+        tryRecipeImage.layer.cornerRadius = 10
+        
         
         
         let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得

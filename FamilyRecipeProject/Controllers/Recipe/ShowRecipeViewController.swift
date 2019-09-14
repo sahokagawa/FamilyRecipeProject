@@ -43,6 +43,10 @@ class ShowRecipeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        ingredient.layer.cornerRadius = 10
+        howTo.layer.cornerRadius = 10
+        message.layer.cornerRadius = 10
         
         self.navigationItem.title = "レシピ"
         
@@ -84,10 +88,6 @@ class ShowRecipeViewController: UIViewController {
         recipeImage.image = UIImage(data: recipe!.photoData)
         name.text = recipe?.name
         
-        
-
-
-
         }
     
     }
