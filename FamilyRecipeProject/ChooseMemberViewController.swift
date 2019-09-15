@@ -20,6 +20,7 @@ class ChooseMemberViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     
     
+    
     //検索結果
     @IBOutlet weak var resultCollection: UICollectionView!
     //    @IBOutlet weak var resultTable: UITableView!
@@ -177,6 +178,7 @@ extension ChooseMemberViewController: UICollectionViewDelegate,UICollectionViewD
             
             //メンバーを削除したい
             let deleteButton = cell.viewWithTag(3) as! UIButton
+            deleteButton.setImage(UIImage(named: "deletebutton"), for: .normal)
             deleteButton.layer.setValue(indexPath.row, forKey: "index")
             deleteButton.addTarget(self, action: #selector(deleteUser(_:)), for: UIControl.Event.touchUpInside)
 
