@@ -85,7 +85,10 @@ class ViewController: UIViewController {
         }
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
+        appDelegate.group = nil
+    }
     
     //セッティングボタンが押されたら
     @IBAction func settingButton(_ sender: UIButton) {

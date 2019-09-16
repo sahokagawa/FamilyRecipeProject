@@ -61,6 +61,7 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
                 let imagePicker = UIImagePickerController()
                 imagePicker.sourceType = .photoLibrary
                 imagePicker.delegate = self
+                imagePicker.allowsEditing = true
                 present (imagePicker, animated: true, completion: nil)
         }
     }
