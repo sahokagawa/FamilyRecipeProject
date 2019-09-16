@@ -193,6 +193,7 @@ extension ChooseMemberViewController: UICollectionViewDelegate,UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.resultCollection{
             selectedUsers.append(users[indexPath.row])
+           
         }
         print(selectedUsers)
     }

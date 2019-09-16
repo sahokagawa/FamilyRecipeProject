@@ -23,8 +23,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
+        appDelegate.group = nil
         
-//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "gohan.png")!)
+        //        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "gohan.png")!)
         
         //コレクションのレイアウト 余白
         let layout = UICollectionViewFlowLayout()
@@ -33,21 +38,21 @@ class ViewController: UIViewController {
         collectionView.collectionViewLayout = layout
         
         //ログインしているユーザーの情報を取得
-         let user = Auth.auth().currentUser!
+        let user = Auth.auth().currentUser!
         //メ-ルアドレスがラベルに表示される
         //loginUserLabel.text = user.email
         //let db = Firestore.firestore()
         //let userName = db.collection("users").document("name")
         //print(user.displayName)
         
-//        loginUserLabel.text = user.displayName! + "のマイページ"
+        //        loginUserLabel.text = user.displayName! + "のマイページ"
         self.navigationItem.title = user.displayName! + "のマイページ"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.settingButton))
         
         
-//        self.navigationController?.navigationBar.barTintColor = UIColor(red: 1.000, green: 0.957, blue: 0.747, alpha: 1)
-//        let settingImage = UIBarButtonItem(image: UIImage(named: "setting"), style: .plain, target: self, action: nil)
-//        self.navigationItem.rightBarButtonItem = settingImage
+        //        self.navigationController?.navigationBar.barTintColor = UIColor(red: 1.000, green: 0.957, blue: 0.747, alpha: 1)
+        //        let settingImage = UIBarButtonItem(image: UIImage(named: "setting"), style: .plain, target: self, action: nil)
+        //        self.navigationItem.rightBarButtonItem = settingImage
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -57,6 +62,7 @@ class ViewController: UIViewController {
         db.collection("users").document(user.uid).collection("groups").getDocuments { (querySnapshot, error) in
             guard let documents  = querySnapshot?.documents else{
                 //グループなかった時、処理を中断
+                self.groups = []
                 return
             }
             //グループがあった時の処理
@@ -65,17 +71,17 @@ class ViewController: UIViewController {
                     self.groups = groups
                 }
             }
-
+            
             for document in documents {
                 let groupId = document.get("groupId") as! String
                 db.collection("groups").document(groupId).getDocument(completion: { (documentSnapshot, error) in
                     if let document = documentSnapshot, documentSnapshot!.exists {
                         let groupName = document.get("groupName") as! String
                         let groupImage = document.get("photoData") as! Data
-        
+                        
                         let group = Group(uid: document.documentID,
-                            name: groupName,
-                            photoData: groupImage)
+                                          name: groupName,
+                                          photoData: groupImage)
                         groups.append(group)
                     }
                 })
@@ -83,11 +89,6 @@ class ViewController: UIViewController {
             }
             
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
-        appDelegate.group = nil
     }
     
     //セッティングボタンが押されたら

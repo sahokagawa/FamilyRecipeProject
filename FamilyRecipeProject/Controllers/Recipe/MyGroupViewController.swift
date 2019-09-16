@@ -83,15 +83,26 @@ class MyGroupViewController: UIViewController {
         let editorAction = UIAlertAction(title: "編集", style: .default) { (UIAlertAction) in
             self.performSegue(withIdentifier: "toReSettingGroup", sender: self.group)
         }
-//        let  deleteAction = UIAlertAction(title: "グループを退会する", style: .default) { (UIAlertAction) in
-//            print("削除")
-//        }
+        let  deleteAction = UIAlertAction(title: "グループを退会する", style: .default) { (UIAlertAction) in
+            let db = Firestore.firestore()
+            let user = Auth.auth().currentUser
+            db.collection("users").document(user!.uid).collection("groups").document(self.group!.uid).delete()
+           
+            db.collection("groups").document(self.group!.uid).collection("users").document(user!.uid).delete()
+            
+            //マイページに戻りたい
+            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "myPage") as! UINavigationController
+            
+            self.present(secondViewController, animated: true, completion: nil)
+            
+            print("退会")
+        }
         let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
             (action: UIAlertAction!) -> Void in
         })
         
         alert.addAction(editorAction)
-//        alert.addAction(deleteAction)
+        alert.addAction(deleteAction)
         alert.addAction(cancelAction)
         present(alert, animated:true , completion: nil)
         

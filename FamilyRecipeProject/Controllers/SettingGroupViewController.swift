@@ -70,8 +70,9 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
     //選択した画像を画面に表示する
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        if let pickedImage = info[.originalImage] as? UIImage{
-            buttonImage.setImage(pickedImage, for: .normal)
+        if info[.originalImage] != nil {
+            let image = info[.editedImage] as! UIImage
+            buttonImage.setImage(image, for: .normal)
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -113,7 +114,7 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
                 
                 //選択された人をグループに登録
                 for user in self.selectedMember {
-                    ref?.collection("users").addDocument(data: [
+                    ref?.collection("users").document(user.uid).setData([
                         "uid": user.uid
                     ])
                     
@@ -164,9 +165,7 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
                 
                 //選択された人をグループに登録
                 for user in self.selectedMember {
-                    db.collection("groups").document(self.group!.uid).collection("users").addDocument(data: [
-                        "uid": user.uid
-                        ])
+                db.collection("groups").document(self.group!.uid).collection("users").document(user.uid).setData(["uid": user.uid])
                     
                     
                     db.collection("users").whereField("uid", isEqualTo: user.uid).getDocuments(completion: { (querySnapshot, error) in

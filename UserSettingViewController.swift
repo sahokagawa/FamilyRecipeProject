@@ -67,8 +67,9 @@ class UserSettingViewController: UIViewController,UITextFieldDelegate,UIImagePic
     //選択した画像を画面に表示する
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        if let pickedImage = info[.originalImage] as? UIImage{
-            imageViewButton.setImage(pickedImage, for: .normal)
+        if info[.originalImage] != nil {
+            let image = info[.editedImage] as! UIImage
+            imageViewButton.setImage(image, for: .normal)
         }
         picker.dismiss(animated: true, completion: nil)
     }
