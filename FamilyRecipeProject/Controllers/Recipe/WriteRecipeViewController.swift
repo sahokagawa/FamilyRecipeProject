@@ -35,6 +35,9 @@ class WriteRecipeViewController: UIViewController,UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        buttonImage.setTitle("タップして画像を選択", for: .normal)
+        buttonImage.setBackgroundImage(UIImage(named: "gohan"), for: .normal)
+        
         self.navigationItem.title = "レシピを書く"
         
         createButton.layer.cornerRadius = 10
@@ -69,7 +72,15 @@ class WriteRecipeViewController: UIViewController,UIImagePickerControllerDelegat
     
     //レシピ作成ボタンが押されたら
     @IBAction func createRecipe(_ sender: UIButton) {
-        let data = buttonImage.imageView?.image?.jpegData(compressionQuality: 0.1)
+        
+        var recipeImage: Data!
+        if let data = buttonImage.imageView?.image{
+            recipeImage = data.jpegData(compressionQuality: 0.1)!
+        }else{
+            recipeImage = UIImage(named: "gohan")?.jpegData(compressionQuality: 0.1)!
+        }
+        
+        
         let name = recipeName.text
         let messageFor = message.text
         let point1 = ingredients.text
@@ -78,7 +89,7 @@ class WriteRecipeViewController: UIViewController,UIImagePickerControllerDelegat
         db.collection("groups").document(group!.uid).collection("recipes").addDocument(data: [
             "name": name as Any,
             "message": messageFor as Any,
-            "photoData": data as Any,
+            "photoData": recipeImage,
             "ingredients" :point1 as Any,
             "howTo":point2 as Any
         ]) { err in

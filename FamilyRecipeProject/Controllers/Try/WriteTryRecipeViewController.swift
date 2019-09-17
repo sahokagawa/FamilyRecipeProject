@@ -27,6 +27,9 @@ class WriteTryRecipeViewController: UIViewController,UIImagePickerControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        tryRecipeImage.setTitle("タップして画像を選択", for: .normal)
+        tryRecipeImage.setBackgroundImage(UIImage(named: "gohan"), for: .normal)
         self.navigationItem.title = "作ってみたを書く"
         tryRecipeMessage.layer.cornerRadius = 10
         clickButton.layer.cornerRadius = 10
@@ -61,14 +64,19 @@ class WriteTryRecipeViewController: UIViewController,UIImagePickerControllerDele
     
     //作ってみた完成ボタン
     @IBAction func createTryRecipe(_ sender: UIButton) {
-        let data = tryRecipeImage.imageView?.image?.jpegData(compressionQuality: 0.1)
+        var tryrecipeImage: Data!
+        if let data = tryRecipeImage.imageView?.image{
+            tryrecipeImage = data.jpegData(compressionQuality: 0.1)!
+        }else{
+            tryrecipeImage = UIImage(named: "gohan")?.jpegData(compressionQuality: 0.1)!
+        }
         let name = tryRecipeName.text
         let messageFor = tryRecipeMessage.text
         let db = Firestore.firestore()
         db.collection("groups").document(group!.uid).collection("tryRecipes").addDocument(data: [
             "name": name as Any,
             "message": messageFor as Any,
-            "photoData": data as Any
+            "photoData": tryrecipeImage
         ]) { err in
             
             if let err = err {

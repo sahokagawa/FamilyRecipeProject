@@ -46,6 +46,8 @@ class ViewController: UIViewController {
         //print(user.displayName)
         
         //        loginUserLabel.text = user.displayName! + "のマイページ"
+        
+        
         self.navigationItem.title = user.displayName! + "のマイページ"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.settingButton))
         

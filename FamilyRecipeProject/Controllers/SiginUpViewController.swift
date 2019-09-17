@@ -33,8 +33,8 @@ class SiginUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
 //        scrollView.frame = self.view.frame
 //        scrollView.contentSize = CGSize(width:self.view.frame.width, height:1000)
 //        self.view.addSubview(scrollView)
-        
-        
+        buttonImage.setTitle("タップして画像を選択", for: .normal)
+        buttonImage.setBackgroundImage(UIImage(named: "gohan"), for: .normal)
         //起動画面　スプラッシュ
         let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "first")!,iconInitialSize: CGSize(width: 200, height: 200), backgroundColor: UIColor(red:255.0, green:255.0, blue:255.0, alpha:1.0))
         //Adds the revealing splash view as a sub view
@@ -105,7 +105,13 @@ class SiginUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
                         })
                         
                         //プロフィール画像をfirestoreに保存したい
-                        let profileImage = self.buttonImage.imageView?.image!.jpegData(compressionQuality: 0.1)! as! Data
+                        var profileImage: Data!
+                        if let image = self.buttonImage.imageView?.image {
+                            profileImage = image.jpegData(compressionQuality: 0.1)!
+                        } else {
+                            profileImage = UIImage(named: "gohan")!.jpegData(compressionQuality: 0.1)!
+                        }
+                        
                         
                         
                         

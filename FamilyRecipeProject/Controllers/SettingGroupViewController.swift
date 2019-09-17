@@ -29,6 +29,9 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        buttonImage.setTitle("タップして画像を選択", for: .normal)
+        buttonImage.setBackgroundImage(UIImage(named: "gohan"), for: .normal)
+        
         self.navigationItem.title = "グループの設定"
         createButton.layer.cornerRadius = 10
         groupName.layer.cornerRadius = 10
@@ -49,7 +52,8 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
             let me :User = User(uid: user!.uid, name: (user?.displayName)!, photoUrl: (user?.photoURL!.absoluteString)!, groups: [""])
             self.selectedMember.append(me)
         } else{
-            buttonImage.setImage(UIImage(data: group!.photoData), for: .normal)
+            buttonImage.setBackgroundImage(UIImage(data: group!.photoData), for: .normal)
+            self.buttonImage.setTitle("タップして画像を選択", for:.normal)
             groupName.text = group?.name
         }
     }
@@ -85,15 +89,25 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
         
         let user = Auth.auth().currentUser
         let uid = user?.uid
-        let data = buttonImage.imageView?.image?.jpegData(compressionQuality: 0.1)
-        let db = Firestore.firestore()
         
+        var profileImage: Data!
+        if let data = buttonImage.imageView?.image{
+            profileImage = data.jpegData(compressionQuality: 0.1)!
+        }else{
+            profileImage = UIImage(named: "gohan")?.jpegData(compressionQuality: 0.1)!
+        }
+    
+       
+        
+        
+        
+        let db = Firestore.firestore()
         if group == nil {
         
         var ref: DocumentReference? = nil
         ref = db.collection("groups").addDocument(data: [
             "groupName": groupName.text as Any,
-            "photoData": data as Any,
+            "photoData": profileImage,
         ]) { err in
             
             if let err = err {
@@ -150,7 +164,7 @@ class SettingGroupViewController: UIViewController,UIImagePickerControllerDelega
         }else{
             db.collection("groups").document(group!.uid).setData([
                 "groupName": groupName.text as Any,
-                "photoData": data as Any,
+                "photoData": profileImage,
             ])
             
             db.collection("groups").document(group!.uid).collection("users").getDocuments { (querySnapshot, error) in

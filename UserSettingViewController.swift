@@ -43,7 +43,9 @@ class UserSettingViewController: UIViewController,UITextFieldDelegate,UIImagePic
                 let image = UIImage(data: data)
                 
                 DispatchQueue.main.async {
-                    self.imageViewButton.setImage(image, for: .normal)
+//                    self.imageViewButton.setImage(image, for: .normal)
+                    self.imageViewButton.setBackgroundImage(image, for: .normal)
+                    self.imageViewButton.setTitle("タップして画像を選択", for:.normal)
                 }
                 
             } catch let error {
