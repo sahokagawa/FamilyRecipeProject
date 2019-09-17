@@ -53,6 +53,11 @@ class ShowRecipeViewController: UIViewController {
         ingredient.text = recipe?.ingredients
         ingredient.isEditable = false
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.didClickButton))
+        
+        
+        
+        
 //        ingredient.shouldTrim = true
 //        ingredient.maximumNumberOfLines = 2
 //        ingredient.attributedReadMoreText = NSAttributedString(string: "...続きを読む")
@@ -89,6 +94,24 @@ class ShowRecipeViewController: UIViewController {
         name.text = recipe?.name
         
         }
+    
+    
+    //通報のアラート
+    @objc func didClickButton(_ sender: UIButton){
+        let alert = UIAlertController(title: "通報する", message: "選択してください", preferredStyle: .actionSheet)
+        let yesAction = UIAlertAction(title: "通報する", style: .default) { (UIAlertAction) in
+            //通報の処理
+            let db = Firestore.firestore()
+            db.collection("")
+        }
+        
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .default) { (UIAlertAction) in
+        }
+        
+        alert.addAction(yesAction)
+        alert.addAction(cancelAction)
+        present(alert, animated:true , completion: nil)
+    }
     
     }
 

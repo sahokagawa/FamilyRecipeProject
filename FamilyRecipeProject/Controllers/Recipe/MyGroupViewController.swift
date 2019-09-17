@@ -83,6 +83,11 @@ class MyGroupViewController: UIViewController {
         let editorAction = UIAlertAction(title: "編集", style: .default) { (UIAlertAction) in
             self.performSegue(withIdentifier: "toReSettingGroup", sender: self.group)
         }
+        let allMemberAction = UIAlertAction(title: "メンバー", style: .default) { (UIAlertAction) in
+            self.performSegue(withIdentifier: "toSeeMember", sender: self.group)
+            
+        }
+        
         let  deleteAction = UIAlertAction(title: "グループを退会する", style: .default) { (UIAlertAction) in
             let db = Firestore.firestore()
             let user = Auth.auth().currentUser
@@ -102,12 +107,25 @@ class MyGroupViewController: UIViewController {
         })
         
         alert.addAction(editorAction)
+        alert.addAction(allMemberAction)
         alert.addAction(deleteAction)
         alert.addAction(cancelAction)
         present(alert, animated:true , completion: nil)
         
         
+        //通報ボタンを作りたい
+        //そのためにクリックされたら、次のページにメンバー一覧を出したい
+//        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//            if segue.identifier == "toSeeMember"{
+//                let nextVC = segue.destination as! AllMemberViewController
+//                nextVC.allMember = sender as!
+//            }
+//
+//        }
+    
     }
+    
 
 
 }

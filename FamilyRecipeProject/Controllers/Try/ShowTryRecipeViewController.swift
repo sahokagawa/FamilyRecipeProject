@@ -22,6 +22,8 @@ class ShowTryRecipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.didClickButton))
+        
         self.navigationItem.title = "作ってみた"
         
        tryRecipeImage.image = UIImage(data: tryRecipe!.photoData)
@@ -32,6 +34,22 @@ class ShowTryRecipeViewController: UIViewController {
         message.layer.cornerRadius = 10
 
     }
+    
+    //通報のアラート
+    @objc func didClickButton(_ sender: UIButton){
+        let alert = UIAlertController(title: "通報する", message: "選択してください", preferredStyle: .actionSheet)
+        let yesAction = UIAlertAction(title: "通報する", style: .default) { (UIAlertAction) in
+            //通報の処理
+        }
+        
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .default) { (UIAlertAction) in
+        }
+        
+        alert.addAction(yesAction)
+        alert.addAction(cancelAction)
+        present(alert, animated:true , completion: nil)
+    }
+    
     
 
 }

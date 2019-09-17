@@ -48,8 +48,12 @@ class WriteRecipeViewController: UIViewController,UIImagePickerControllerDelegat
         
         let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
         group = appDelegate.group
-
+        
+        
+        
+    
     }
+    
     
     //料理の写真選択ボタン
     @IBAction func selectRecipeImage(_ sender: UIButton) {
