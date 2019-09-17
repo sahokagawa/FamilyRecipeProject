@@ -28,7 +28,9 @@ class MyGroupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         //コレクションのレイアウト 余白
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
@@ -40,7 +42,7 @@ class MyGroupViewController: UIViewController {
         
         recipeCollection.delegate = self
         recipeCollection.dataSource = self
-
+        
         let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
         group = appDelegate.group
         //ナビゲーション
@@ -49,7 +51,8 @@ class MyGroupViewController: UIViewController {
         
         //レシピを表示させたい
         let db = Firestore.firestore()
-        db.collection("groups").document(group!.uid).collection("recipes").getDocuments { (querySnapshot, error) in
+        
+        db.collection("groups").document(group!.uid).collection("recipes").addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else{
                 return
             }
@@ -71,9 +74,8 @@ class MyGroupViewController: UIViewController {
                 let recipe = Recipe(uid: recipeId, name: recipeName, photoData: recipeImage,message: recipeMessage, ingredients: recipeIngredients, howTo: recipeHowTo)
                 recipes.append(recipe)
             }
-            
         }
-    
+
     }
     
     

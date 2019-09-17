@@ -24,6 +24,9 @@ class TryRecipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "グループの名前"
         
         let layout = UICollectionViewFlowLayout()
@@ -40,7 +43,7 @@ class TryRecipeViewController: UIViewController {
         //作ってみたを表示させたい
         let db = Firestore.firestore()
         
-        db.collection("groups").document(group!.uid).collection("tryRecipes").getDocuments { (querySnapshot, error) in
+        db.collection("groups").document(group!.uid).collection("tryRecipes").addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else{
                 return
             }
@@ -64,7 +67,6 @@ class TryRecipeViewController: UIViewController {
         }
 
     }
-
 }
 
 

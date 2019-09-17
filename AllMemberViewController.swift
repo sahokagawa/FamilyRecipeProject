@@ -87,19 +87,21 @@ extension AllMemberViewController: UITableViewDelegate,UITableViewDataSource {
         
 //        tableView.deselectRow(at: indexPath, animated: true)
         let alert = UIAlertController(title: "アカウント", message: "選択してください", preferredStyle: .actionSheet)
-        let block = UIAlertAction(title: "ブロックする", style: .default) { (UIAlertAction) in
-            
-        }
+//        let block = UIAlertAction(title: "ブロックする", style: .default) { (UIAlertAction) in
+//
+//        }
         
         let report = UIAlertAction(title: "通報する", style: .default) { (UIAlertAction) in
-            
+            let db = Firestore.firestore()
+            db.collection("report").document("user").collection("users").document(self.member[indexPath.row].uid).setData([
+                "uid": self.member[indexPath.row].uid])
         }
         
         let cancel = UIAlertAction(title: "キャンセル", style: .default) { (UIAlertAction) in
             
         }
         
-        alert.addAction(block)
+//        alert.addAction(block)
         alert.addAction(report)
         alert.addAction(cancel)
         present(alert, animated:true , completion: nil)

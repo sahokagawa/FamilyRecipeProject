@@ -102,7 +102,7 @@ class ShowRecipeViewController: UIViewController {
         let yesAction = UIAlertAction(title: "通報する", style: .default) { (UIAlertAction) in
             //通報の処理
             let db = Firestore.firestore()
-            db.collection("")
+            db.collection("report").document("recipe").collection("recipe").document(self.recipe!.uid).setData(["uid" : self.recipe?.uid])
         }
         
         let cancelAction = UIAlertAction(title: "キャンセル", style: .default) { (UIAlertAction) in

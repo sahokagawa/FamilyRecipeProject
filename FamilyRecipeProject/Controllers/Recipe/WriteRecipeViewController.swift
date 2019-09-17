@@ -67,8 +67,9 @@ class WriteRecipeViewController: UIViewController,UIImagePickerControllerDelegat
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        if let pickedImage = info[.originalImage] as? UIImage{
-            buttonImage.setImage(pickedImage, for: .normal)
+        if info[.originalImage] != nil {
+            let image = info[.editedImage] as! UIImage
+            buttonImage.setImage(image, for: .normal)
         }
         picker.dismiss(animated: true, completion: nil)
     }

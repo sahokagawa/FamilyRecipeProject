@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ShowTryRecipeViewController: UIViewController {
     
@@ -39,7 +40,9 @@ class ShowTryRecipeViewController: UIViewController {
     @objc func didClickButton(_ sender: UIButton){
         let alert = UIAlertController(title: "通報する", message: "選択してください", preferredStyle: .actionSheet)
         let yesAction = UIAlertAction(title: "通報する", style: .default) { (UIAlertAction) in
-            //通報の処理
+            let db = Firestore.firestore()
+            db.collection("report").document("tryRecipe").collection("tryRecipe").document(self.tryRecipe!.uid).setData([
+                "uid": self.tryRecipe?.uid])
         }
         
         let cancelAction = UIAlertAction(title: "キャンセル", style: .default) { (UIAlertAction) in

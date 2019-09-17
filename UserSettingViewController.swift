@@ -101,14 +101,18 @@ class UserSettingViewController: UIViewController,UITextFieldDelegate,UIImagePic
             }
             
             
-            
-            let imageUrl = self.imageViewButton.imageView?.image!.jpegData(compressionQuality: 0.1)! as! Data
+            var profileImage: Data!
+            if let imageUrl = self.imageViewButton.imageView?.image{
+                profileImage = imageUrl.jpegData(compressionQuality: 0.1)! as! Data
+            }else{
+                profileImage = UIImage(named: "gohan")?.jpegData(compressionQuality: 0.1)!
+            }
             
             
             let storage = Storage.storage()
             let storageRef = storage.reference()
             let riversRef = storageRef.child("profiles/\(user.uid).jpg")
-            let uploadTask = riversRef.putData(imageUrl, metadata: nil) { (metadata, error) in
+            let uploadTask = riversRef.putData(profileImage, metadata: nil) { (metadata, error) in
                 guard let metadata = metadata else {
                     // Uh-oh, an error occurred!
                     return
