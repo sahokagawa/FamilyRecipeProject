@@ -46,9 +46,43 @@ class ChooseMemberViewController: UIViewController {
     var group: Group? = nil
     
     
+    //ブロック
+    var blockUsers : [String] = []{
+        didSet{
+            removeBlockUser()
+        }
+    }
+    
+    func removeBlockUser() {
+        var newUserList:[User] = []
+        for user in users {
+            if (!blockUsers.contains(user.uid)) {
+                newUserList.append(user)
+            }
+            
+        }
+        self.users = newUserList
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       //ブロック
+        let user = Auth.auth().currentUser
+        let db = Firestore.firestore()
+        db.collection("users").document(user!.uid).collection("blocks").getDocuments { (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                return
+            }
+            
+            var blockUsers : [String] = []
+            
+            for document in documents {
+                let uid = document.get("uid") as! String
+                blockUsers.append(uid)
+            }
+            self.blockUsers = blockUsers
+        }
         
 //       resultTable.dataSource = self
 //       resultTable.delegate = self
@@ -111,7 +145,7 @@ class ChooseMemberViewController: UIViewController {
             print(users)
         //19行目あたりのuserと検索結果あった時のuserは違うものだから、同じにする
             self.users = users
-            
+            self.removeBlockUser()
         }
     }
     

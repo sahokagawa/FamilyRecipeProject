@@ -908,7 +908,6 @@
         <!--All Member View Controller-->
         <scene sceneID="sYD-TC-Pa8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wAZ-1t-QeD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="kNg-1T-kLL" customClass="AllMemberViewController" customModule="FamilyRecipeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ral-qk-nE5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -951,6 +950,7 @@
                         <outlet property="MemberTableView" destination="tub-pX-KBd" id="OlE-9V-cLg"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wAZ-1t-QeD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2917.5999999999999" y="2357.2713643178413"/>
         </scene>

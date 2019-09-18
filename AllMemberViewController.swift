@@ -87,13 +87,22 @@ extension AllMemberViewController: UITableViewDelegate,UITableViewDataSource {
         
 //        tableView.deselectRow(at: indexPath, animated: true)
         let alert = UIAlertController(title: "アカウント", message: "選択してください", preferredStyle: .actionSheet)
-//        let block = UIAlertAction(title: "ブロックする", style: .default) { (UIAlertAction) in
-//
-//        }
+        let block = UIAlertAction(title: "ブロックする", style: .default) { (UIAlertAction) in
+            let user = Auth.auth().currentUser
+            let db = Firestore.firestore()
+            db.collection("users").document(self.member[indexPath.row].uid).collection("blocks").document(user!.uid).setData(["uid": user?.uid])
+        }
         
         let report = UIAlertAction(title: "通報する", style: .default) { (UIAlertAction) in
+            
+//            //確認したい
+//            let alert2 = UIAlertController(title: "選択ユーザーをブロックしますか？", message: "相手ユーザー検索結果に表示されなくなります", preferredStyle: .alert)
+//
+//           let yerAction =UIAlertAction
+//            let noAction = UIAlertAction
+            
             let db = Firestore.firestore()
-            db.collection("report").document("user").collection("users").document(self.member[indexPath.row].uid).setData([
+        db.collection("report").document("user").collection("users").document(self.member[indexPath.row].uid).setData([
                 "uid": self.member[indexPath.row].uid])
         }
         
@@ -101,11 +110,12 @@ extension AllMemberViewController: UITableViewDelegate,UITableViewDataSource {
             
         }
         
-//        alert.addAction(block)
+        alert.addAction(block)
         alert.addAction(report)
         alert.addAction(cancel)
         present(alert, animated:true , completion: nil)
     }
+
 }
 
 
