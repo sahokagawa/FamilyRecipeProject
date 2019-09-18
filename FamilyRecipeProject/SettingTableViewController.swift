@@ -9,12 +9,15 @@
 import UIKit
 import Firebase
 
+
 class SettingTableViewController: UITableViewController {
     
     @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var changeLabel: UILabel!
     @IBOutlet weak var changeUser: UILabel!
     @IBOutlet weak var delete: UILabel!
+    
+    @IBOutlet weak var questionLabel: UILabel!
     
     
     
@@ -31,7 +34,7 @@ class SettingTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,15 +42,26 @@ class SettingTableViewController: UITableViewController {
         switch section {
         case 0: // 「設定」のセクション
             return 4
+        case 1:
+            return 1
         default: // ここが実行されることはないはず
             return 0
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            //ログアウトボタンが押されたら
+        
+        //お問い合わせメール
+        if indexPath.section == 1  {
+            performSegue(withIdentifier: "toMail", sender: nil)
             
+            
+        }
+        
+        
+        if   indexPath.section == 0 && indexPath.row == 0 {
+            //ログアウトボタンが押されたら
+            print(indexPath.section)
             //アラート
             let alert =  UIAlertController(title: "ログアウトしますか？", message: "選択してください", preferredStyle:.alert)
             let yesAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
@@ -108,7 +122,7 @@ class SettingTableViewController: UITableViewController {
             
                 }
         
-        
+       
     }
     
     
