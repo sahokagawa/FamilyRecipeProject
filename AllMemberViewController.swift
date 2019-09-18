@@ -87,19 +87,15 @@ extension AllMemberViewController: UITableViewDelegate,UITableViewDataSource {
         
 //        tableView.deselectRow(at: indexPath, animated: true)
         let alert = UIAlertController(title: "アカウント", message: "選択してください", preferredStyle: .actionSheet)
+
         let block = UIAlertAction(title: "ブロックする", style: .default) { (UIAlertAction) in
-            let user = Auth.auth().currentUser
-            let db = Firestore.firestore()
-            db.collection("users").document(self.member[indexPath.row].uid).collection("blocks").document(user!.uid).setData(["uid": user?.uid])
+            
+            self.showAlert(uid: self.member[indexPath.row].uid)
+            
+            
         }
         
         let report = UIAlertAction(title: "通報する", style: .default) { (UIAlertAction) in
-            
-//            //確認したい
-//            let alert2 = UIAlertController(title: "選択ユーザーをブロックしますか？", message: "相手ユーザー検索結果に表示されなくなります", preferredStyle: .alert)
-//
-//           let yerAction =UIAlertAction
-//            let noAction = UIAlertAction
             
             let db = Firestore.firestore()
         db.collection("report").document("user").collection("users").document(self.member[indexPath.row].uid).setData([
@@ -116,6 +112,24 @@ extension AllMemberViewController: UITableViewDelegate,UITableViewDataSource {
         present(alert, animated:true , completion: nil)
     }
 
+    func showAlert(uid:String) {
+        
+        //確認したい
+        let alert2 = UIAlertController(title: "選択ユーザーをブロックしますか？", message: "相手ユーザーの検索結果に表示されなくなります", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "はい", style: .default) { (UIAlertAction) in
+            let user = Auth.auth().currentUser
+            let db = Firestore.firestore()
+            db.collection("users").document(uid).collection("blocks").document(user!.uid).setData(["uid": user?.uid])
+        }
+        let noAction = UIAlertAction(title: "キャンセル", style: .default) { (UIAlertAction) in
+            
+        }
+        
+        alert2.addAction(noAction)
+        alert2.addAction(yesAction)
+        present(alert2, animated:true , completion: nil)
+    }
+    
 }
 
 
