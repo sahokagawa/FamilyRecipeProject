@@ -15,5 +15,7 @@ target 'FamilyRecipeProject' do
   pod 'IQKeyboardManagerSwift'
   pod 'ReadMoreTextView'
   pod 'ExpandableLabel'
+  # https://firebase.google.com/docs/ios/setup#available-pods
+  pod 'Firebase/AdMob'
 end
 

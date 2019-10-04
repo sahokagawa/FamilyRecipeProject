@@ -130,8 +130,6 @@
 				31A3D3FA231547CD004AC9EF /* objects */,
 				31A3D3E6231543AF004AC9EF /* AppDelegate.swift */,
 				31A3D3EA231543AF004AC9EF /* Main.storyboard */,
-				31E767CB233230E3005878DD /* MailViewController.swift */,
-				3144078C232B2E44003B6190 /* MailSettingViewController.swift */,
 				31A3D3ED231543B2004AC9EF /* Assets.xcassets */,
 				31A3D3EF231543B2004AC9EF /* LaunchScreen.storyboard */,
 				31A3D3F2231543B2004AC9EF /* Info.plist */,
@@ -160,6 +158,8 @@
 				3107D5B7231764D4000AA09E /* ChooseMemberViewController.swift */,
 				3107D5C32317C9D7000AA09E /* SettingGroupViewController.swift */,
 				31BC4B7423274945001D58CE /* SettingTableViewController.swift */,
+				31E767CB233230E3005878DD /* MailViewController.swift */,
+				3144078C232B2E44003B6190 /* MailSettingViewController.swift */,
 				315192D3231E6F230073C304 /* Recipe */,
 				315192D4231E6F510073C304 /* Try */,
 			);

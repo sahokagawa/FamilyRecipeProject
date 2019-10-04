@@ -8,10 +8,19 @@
 
 import UIKit
 import Firebase
+import GoogleMobileAds
 
 class ViewController: UIViewController {
     
 //    @IBOutlet weak var loginUserLabel: UILabel!
+    
+    //広告
+    @IBOutlet weak var bannerView: GADBannerView!
+    //テスト用の広告
+//    let admobId = "ca-app-pub-3940256099942544/2934735716"
+    //リリース用
+    let admobId = "ca-app-pub-4775744210161408/2496870902"
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     var groups : [Group] = [] {
@@ -31,11 +40,20 @@ class ViewController: UIViewController {
         
         //        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "gohan.png")!)
         
+        
+        //広告
+        bannerView.adUnitID = admobId
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
+        
         //コレクションのレイアウト 余白
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
         layout.itemSize = CGSize(width:170, height:170)
         collectionView.collectionViewLayout = layout
+        
+        
         
         //ログインしているユーザーの情報を取得
         let user = Auth.auth().currentUser!

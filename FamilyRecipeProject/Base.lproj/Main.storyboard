@@ -267,7 +267,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dIe-gb-lVu">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="523"/>
                                 <color key="backgroundColor" red="0.95641130208969116" green="0.92953354120254517" blue="0.83766812086105347" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bXK-BY-m2c">
                                     <size key="itemSize" width="175" height="188"/>
@@ -300,20 +300,29 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aw2-td-xGv" customClass="GADBannerView">
+                                <rect key="frame" x="46" y="595" width="283" height="54"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="283" id="hIJ-aP-eYe"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.95641130208969116" green="0.92953354120254517" blue="0.83766812086105347" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="dIe-gb-lVu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="4xH-j7-Dz6"/>
-                            <constraint firstItem="dIe-gb-lVu" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="D7Z-L5-vXQ"/>
-                            <constraint firstItem="dIe-gb-lVu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FCg-jZ-ASl"/>
-                            <constraint firstItem="dIe-gb-lVu" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="XBW-QD-6sm"/>
-                            <constraint firstItem="dIe-gb-lVu" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="lRj-o7-9kd"/>
-                            <constraint firstItem="dIe-gb-lVu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="mS3-Ze-Ocm"/>
+                            <constraint firstItem="dIe-gb-lVu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="BGa-Ur-rR5"/>
+                            <constraint firstItem="dIe-gb-lVu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Fqy-Sp-EMT"/>
+                            <constraint firstItem="Aw2-td-xGv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IZ3-nW-v2G"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Aw2-td-xGv" secondAttribute="bottom" constant="18" id="Mfu-oE-Kxl"/>
+                            <constraint firstItem="Aw2-td-xGv" firstAttribute="top" secondItem="dIe-gb-lVu" secondAttribute="bottom" constant="8" id="Uf7-Md-oc8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dIe-gb-lVu" secondAttribute="bottom" constant="80" id="dEQ-Bw-xCA"/>
+                            <constraint firstItem="dIe-gb-lVu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sFb-52-68l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Agq-Ns-2jv"/>
                     <connections>
+                        <outlet property="bannerView" destination="Aw2-td-xGv" id="pt5-XP-omw"/>
                         <outlet property="collectionView" destination="dIe-gb-lVu" id="19o-FC-5ac"/>
                         <segue destination="ekU-VJ-OMu" kind="show" identifier="toChooseMember" id="lI2-2x-0Re"/>
                         <segue destination="xeG-g5-OjN" kind="show" identifier="toMyGroup" id="nXE-N1-XLV"/>
@@ -1518,7 +1527,7 @@
         <image name="recipe" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="U6T-39-2oK"/>
-        <segue reference="8Oq-3j-1L8"/>
+        <segue reference="lI2-2x-0Re"/>
+        <segue reference="Fqd-Lp-MmG"/>
     </inferredMetricsTieBreakers>
 </document>
